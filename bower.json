@@ -1,0 +1,28 @@
+{
+  "name": "cupom desconto",
+  "description": "client",
+  "main": "index.html",
+  "authors": [
+    "Joceano"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-messages": "latest",
+    "angular-i18n": "latest",
+    "angular-route": "latest",
+    "angular-cookies": "^1.6.1",
+    "angular-material": "^1.0.9",
+    "angular-aria": "^1.5.8",
+    "angular-animate": "^1.5.8"
+  }
+}
