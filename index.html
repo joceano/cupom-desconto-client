@@ -22,6 +22,7 @@
 						<div>
 							<img ng-src="/img/60.png" class="md-avatar" alt="{{user.foto}}" />
 						</div>
+						<div style="cursor: pointer;" ng-click="gotoSection('profile')" layout="column">		
 								<span class="md-title">{{user.username}}</span>
 								<span class="md-subhead">{{user.email}}</span>
 								<span class="md-subhead" ng-click="logout()">Sair</span>

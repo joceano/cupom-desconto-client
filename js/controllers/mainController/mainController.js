@@ -29,6 +29,13 @@
 		scope.logout = function () {
 			loginService.logout();
 		}
+
+		scope.user = {};
+
+    	loginService.userLogged().then(function (result) {
+        	scope.user = result.data;
+    	});
+
 	}]);
 
 })(window.angular);
