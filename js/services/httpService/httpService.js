@@ -1,7 +1,7 @@
 angular.module("app.services").service("HttpService", ['$http', '$cookies',
     function (http, cookies) {
 
-    var contextPath = "http://localhost:8080/api";
+    var contextPath = "http://localhost:8080/server";
 
     this.get = function (url) {
         return http({

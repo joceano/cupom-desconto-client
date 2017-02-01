@@ -2,7 +2,7 @@
 <html ng-app="app">
 
 <head>
-		<title>Safe</title>
+		<title>Cupons de desconto</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="x-ua-compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,15 +18,15 @@
 <body ng-controller="MainController">
 	<md-sidenav class="md-sidenav-left md-whiteframe-z2" role="sidenav" md-component-id="left">
 			<md-toolbar class="md-tall md-hue-2" layout-align="end end">
-					<!--<div class="md-toolbar-tools" layout layout-padding>
+					<div class="md-toolbar-tools" layout layout-padding>
 						<div>
-							<img ng-src="{{user.foto}}" class="md-avatar" alt="{{user.foto}}" />
+							<img ng-src="/img/60.png" class="md-avatar" alt="{{user.foto}}" />
 						</div>
-						<div style="cursor: pointer;" ng-click="gotoSection('profile')" layout="column">
-								<span class="md-title">{{user.nome}}</span>
+								<span class="md-title">{{user.username}}</span>
 								<span class="md-subhead">{{user.email}}</span>
+								<span class="md-subhead" ng-click="logout()">Sair</span>
 						</div>
-					</div>-->
+					</div>
 			</md-toolbar>
 			<md-content role="navigation">
 					<md-list-item ng-repeat="item in mainMenuItems" ng-click="gotoSection(item.location)">
