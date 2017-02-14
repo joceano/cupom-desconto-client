@@ -1,0 +1,20 @@
+<div flex ng-if="loading" layout="row" layout-sm="column" layout-align="space-around center" >
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</div>
+<div class="lista">
+    <md-content layout="column" class="relative" layout-fill role="main">
+        <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="">
+            <md-icon md-svg-icon="content:ic_add_24px" aria-label="Plus"></md-icon>
+        </md-button>
+        <md-content flex layout="row">        
+            <md-list flex>         
+                <md-subheader class="md-no-sticky">Categorias</md-subheader>
+                <md-list-item class="md-2-line" ng-repeat="categoria in categorias" ng-click="openDialog(categoria, $event)">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ categoria.id }} - {{ categoria.nome }}</h3>                    
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-content>    
+<div>

@@ -2,8 +2,7 @@
 	'use strict';
 	angular.module('app.routes', ['ngRoute', 'ngMaterial'])
 
-	.config(function ($mdDateLocaleProvider, $mdThemingProvider, $mdAriaProvider) {
-		// $mdThemingProvider.theme('default').primaryPalette('red');
+	.config(function ($mdDateLocaleProvider, $mdThemingProvider, $mdAriaProvider) {		
 		$mdThemingProvider.theme('default').primaryPalette('teal');		
 		
 	})
@@ -17,6 +16,9 @@
 		}).when('/login', {
 			templateUrl: 'partials/login.html',
 			controller: 'LoginController'
+		}).when('/categoria', {
+			templateUrl: 'partials/categoria.html',
+			controller: 'CategoriaController'
 		}).otherwise({
 			redirectTo: '/home'
 		});

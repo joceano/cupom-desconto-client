@@ -3,8 +3,9 @@ angular.module("app.controllers").controller("LoginController", ['$scope', 'Logi
 
     scope.auth = function (login) {
         loginService.auth(login).then(function (result) {
-            loginService.saveToken(result.data.token);
+            loginService.saveToken(result.data.token);            
             location.hash = "/";
+            scope.$emit('usuarioLogado');
         });
     };
 

@@ -1,7 +1,7 @@
-angular.module("app.services").service("HttpService", ['$http', '$cookies',
-    function (http, cookies) {
+angular.module("app.services").service("HttpService", ['$http', '$cookies', '$location',
+    function (http, cookies, location) {
 
-    var contextPath = "http://localhost:8080/server";
+    var contextPath = "http://192.168.0.103:8080/server";
 
     this.get = function (url) {
         return http({
@@ -10,11 +10,12 @@ angular.module("app.services").service("HttpService", ['$http', '$cookies',
             contentType: "application/json",
             headers: {
                 "X-Auth-Token": cookies.get('X-Auth-Token')
-            }
+            }            
+        }).then(function(response){
+            return response;
+        }, function(error){
+            location.path("/login");
         });
-        /*.error(function (e, status) {
-            location.hash = "login";
-        });*/
     };
 
     this.post = function (url, obj) {
@@ -26,10 +27,11 @@ angular.module("app.services").service("HttpService", ['$http', '$cookies',
             headers: {
                 "X-Auth-Token": cookies.get('X-Auth-Token')
             }
+        }).then(function(response){
+            return response;
+        }, function(error){
+            location.path("/login");
         });
-        /*.error(function (e, status) {
-            location.hash = "login";
-        });*/
     };
 
 }]);
