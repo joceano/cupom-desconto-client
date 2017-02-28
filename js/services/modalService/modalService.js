@@ -19,7 +19,7 @@
             }).then(function(response) {
                 callBack(response);
             }, function() {
-                console.log('cancelado');
+                //console.log('cancelado');
             });
         };
 
