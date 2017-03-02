@@ -1,76 +1,37 @@
-<!--
-<div layout="column" layout-align-gt-sm="center center" > 
-    <form name="formLogin" role="form" ng-submit="auth(login)">
-        <md-card flex>
-            <md-card-header>
-                <md-card-avatar>
-                    <md-icon>account_circle</md-icon>
-                </md-card-avatar>
-                <md-card-header-text>
-                    <span class="md-title">Login</span>
-                    <span class="md-subhead">informe seu usuário e senha</span>
-                </md-card-header-text>
-            </md-card-header>
-            <md-card-content layout="column">
-                <md-input-container flex>
-                    <label>Usuário</label>
-                    <input name="user" ng-model="login.username" autofocus required>
-                    <div ng-messages="formLogin.user.$error">
-                        <div ng-message="required">Usuário é necessário.</div>
-                    </div>
-                </md-input-container>
-                    <md-input-container flex>
-                    <label>Senha</label>
-                    <input name="password" ng-model="login.password" type="password" required>
-                    <div ng-messages="formLogin.password.$error">
-                        <div ng-message="required">Senha é necessário.</div>
-                    </div>
-                </md-input-container>
-            <md-card-content>
-            </md-card-content layout="column">
-                <md-button class="md-raised md-primary" flex ng-disabled="form.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</md-button>
-                <md-button md-no-ink class="md-primary" flex>Ainda não sou cadastrado.</md-button>
-            </md-card-actions>
-        </md-card>
-    </form>
-</div>
--->
 
-<md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
-    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
-        <md-toolbar>
-          <div class="md-toolbar-tools">
-            <h2><span>Login Form</span></h2>
-          </div>
-        </md-toolbar>
-        <form name="Form" role="form" ng-submit="auth(login)">
-            <md-card-content>
-              
-                <md-input-container class="md-block">
-                  <label>Login</label>
-                  <input type="text" name="email" ng-model="login.username" required=""/>
-                  <div ng-messages="Form.email.$error" role="alert" multiple="">
-                    <div ng-message="required" class="my-message">Please enter your email.</div>
-                  </div>
-                </md-input-container>
-                <md-input-container class="md-block">
-                  <label>Password</label>
-                  <input type="password" name="password" ng-model="login.password" required=""/>
-                  <div ng-messages="Form.password.$error" role="alert" multiple="">
-                    <div ng-message="required" class="my-message">Please enter your password.</div>
-                  </div>
-                </md-input-container>
-                                  
-            </md-card-content>
-            
-           
-            <md-card-content layout="column">
-                <md-button class="md-raised md-primary" flex ng-disabled="!Form.$valid" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</md-button>
-                <md-button md-no-ink class="md-primary" flex>Ainda não sou cadastrado.</md-button>
-            </md-card-content>
-        
-        </form>
-
-    </md-card>
-
+<md-content layout="row" layout-align="space-around" layout-padding="layout-padding" 
+ ng-cloak="ng-cloak" class="login-form">
+	<md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+		<md-toolbar>
+			<div class="md-toolbar-tools" layout-align="center center">
+				<h2><span>Login</span></h2>
+		  	</div>
+		</md-toolbar>		
+		<form name="formLogin" role="form" ng-submit="auth(login)">
+			<md-card-content>			  
+				<md-input-container class="md-block">
+					<label>E-mail</label>
+				  	<md-icon>person</md-icon>
+				  	<input type="email" name="email" ng-model="login.username" required=""/>
+				  	<div ng-messages="formLogin.email.$error" role="alert">
+						<div ng-message="required" class="my-message">Informe seu e-mail.</div>
+						<div ng-message="email" class="my-message">E-mail inválido.</div>
+				  	</div>
+				</md-input-container>
+				<md-input-container class="md-block">
+					<label>Senha</label>
+				  	<md-icon>https</md-icon>
+				  	<input type="password" name="password" ng-model="login.password" required=""/>
+				  	<div ng-messages="formLogin.password.$error" role="alert">
+						<div ng-message="required" class="my-message">Informe sua senha.</div>
+				  	</div>
+				</md-input-container>								 
+			</md-card-content>					   
+			<md-card-content layout="column">
+				<md-button class="md-raised md-primary" flex ng-disabled="!formLogin.$valid" 
+				 class="btn btn-lg btn-primary btn-block" type="submit">Entrar</md-button>
+				<md-button md-no-ink class="md-primary" flex>Cadastre-se</md-button>
+			</md-card-content>		
+		</form>
+	</md-card>
 </md-content>

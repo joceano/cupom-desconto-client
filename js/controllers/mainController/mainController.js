@@ -1,8 +1,8 @@
 (function (angular) {
 	'use strict';
-
-	angular.module('app.controllers').controller('MainController', ['$scope', '$mdSidenav','$location','LoginService','$mdDialog',
-	 function(scope, mdSidenav, location, loginService, mdDialog) {
+	angular.module('app.controllers').controller('MainController', 
+		['$scope', '$mdSidenav','$location','LoginService','$mdDialog',
+	 	function(scope, mdSidenav, location, loginService, mdDialog) {
 	 	
 		scope.$on('usuarioLogado', function(){
 			getUsuarioLogado();
@@ -14,14 +14,13 @@
 			});
 		};
 	 	
-
 		scope.mainMenuItems = [
 			{
 				label: "Home",
 				location: "home",
 				icon: 'home',
 				iconSeparator: 'chevron_right',
-			}, 
+			},			
 			{
 				label: "Contato",
 				location: "contato",
@@ -30,7 +29,7 @@
 			}
 		]; 
 
-		scope.titulo = "Home"; 
+		scope.titulo = "Cupons de desconto"; 
 
 		scope.menu = [
 			{
@@ -58,7 +57,6 @@
 		scope.openMenu = function($mdOpenMenu, ev) {
 			$mdOpenMenu(ev);
 		};
-
 
 		getUsuarioLogado();
 

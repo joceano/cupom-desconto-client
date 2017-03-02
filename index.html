@@ -1,121 +1,116 @@
 <!DOCTYPE HTML>
 <html ng-app="app">
-<head>
-	<title>Home</title>
-	<meta charset="UTF-8">
-	<meta http-equiv="x-ua-compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-touch-fullscreen" content="yes">
+	<head>
+		<title>Cupom de desconto</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
 
-	<link rel="icon" type="image/png" href=""/>
-	<link rel="stylesheet" href="css/app.css">
-	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="icon" type="image/png" href=""/>
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-	<script src="bower_components/angular-aria/angular-aria.min.js"></script>
-	<script src="bower_components/angular-route/angular-route.min.js"></script>
-	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
-	<script src="bower_components/angular-material/angular-material.js"></script>
-	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>	
-	<script src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
-	<script src="bower_components/angular-avatar/dist/angular-avatar.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+		<script src="bower_components/angular-material/angular-material.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>	
+		<script src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
+		<script src="bower_components/angular-avatar/dist/angular-avatar.js"></script>
 
-	<script src="js/app.js"></script>
-	<script src="js/controllers/controllers.js"></script>
-	<script src="js/directives/directives.js"></script>
-	<script src="js/config/config.js"></script>
-	<script src="js/services/services.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers/controllers.js"></script>
+		<script src="js/directives/directives.js"></script>
+		<script src="js/config/config.js"></script>
+		<script src="js/services/services.js"></script>
 
-	<!-- Controllers -->
-	<script src="js/controllers/mainController/mainController.js"></script>
-	<script src="js/controllers/homeController/homeController.js"></script>
-	<script src="js/controllers/contatoController/contatoController.js"></script>
-	<script src="js/controllers/loginController/loginController.js"></script>
-	<script src="js/controllers/categoriaController/categoriaController.js"></script>
-	<script src="js/controllers/categoriaController/categoriaDialogController.js"></script>
+		<!-- Controllers -->
+		<script src="js/controllers/mainController/mainController.js"></script>
+		<script src="js/controllers/homeController/homeController.js"></script>
+		<script src="js/controllers/contatoController/contatoController.js"></script>
+		<script src="js/controllers/loginController/loginController.js"></script>
+		<script src="js/controllers/categoriaController/categoriaController.js"></script>
+		<script src="js/controllers/categoriaController/categoriaDialogController.js"></script>
 
-	<!-- Services -->
-	<script src="js/services/httpService/httpService.js"></script>
-	<script src="js/services/loginService/loginService.js"></script>
-	<script src="js/services/modalService/modalService.js"></script>
+		<!-- Services -->
+		<script src="js/services/httpService/httpService.js"></script>
+		<script src="js/services/loginService/loginService.js"></script>
+		<script src="js/services/modalService/modalService.js"></script>
 
-	<!-- Factories -->
-	<script src="js/factories/toastFactory/toastFactory.js"></script>
+		<!-- Factories -->
+		<script src="js/factories/toastFactory/toastFactory.js"></script>
 
-</head>
-<body ng-controller="MainController">
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2" role="sidenav" md-component-id="left">
+	</head>
+	<body ng-controller="MainController">
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" role="sidenav" md-component-id="left">
 			<md-toolbar class="md-tall md-hue-2" layout-align="end end">
-					<div class="md-toolbar-tools" layout="row" layout-padding>
-						<div ng-if="user.username">
-							<img ng-src="/img/60.png" class="md-avatar" alt="" />
-						</div>
-						<div style="cursor: pointer;" ng-click="gotoSelection('profile')" layout="column">
-								<span class="md-title" ng-bind="user.username"></span>
-								<span class="md-subhead" ng-bind="user.email"></span>
-						</div>
-						<span flex></span>
-						<div>
-							<md-menu>
-								<md-button aria-label="Menu usuário" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-									<md-icon md-menu-origin>more_vert</md-icon>
-								</md-button>
-								<md-menu-content width="4">
-									<md-menu-item ng-if="!user.username">
-										<md-button ng-click="gotoSelection('login')">
-											<md-icon md-menu-align-target>arrow_forward</md-icon>
-											<span>Entrar</span>
-										</md-button>
-									</md-menu-item>
-									<md-menu-item ng-if="user.username">
-										<md-button ng-click="gotoSelection('perfil')">											
-											<md-icon md-menu-align-target>arrow_forward</md-icon>
-											<span>Perfil</span>
-										</md-button>
-									</md-menu-item>
-									<md-divider ng-if="user.username"></md-divider>
-									<md-menu-item ng-if="user.username">
-										<md-button ng-click="logout()">											
-											<md-icon md-menu-align-target>arrow_forward</md-icon>
-											<span>Sair</span>
-										</md-button>
-									</md-menu-item>
-								</md-menu-content>
-							</md-menu>
-						</div>
+				<div class="md-toolbar-tools" layout="row" layout-padding>
+					<div ng-if="user.username">
+						<img ng-src="/img/60.png" class="md-avatar" alt="" />
 					</div>
+					<div style="cursor: pointer;" ng-click="gotoSelection('profile')" 
+					 layout="column">
+						<span class="md-title" ng-bind="user.name"></span>
+						<span class="md-subhead" ng-bind="user.username"></span>
+					</div>
+					<span flex></span>
+					<div>
+						<md-menu>
+							<md-button aria-label="Menu usuário" class="md-icon-button" 
+							 ng-click="openMenu($mdOpenMenu, $event)">
+								<md-icon md-menu-origin>more_vert</md-icon>
+							</md-button>
+							<md-menu-content width="2">
+								<md-list-item ng-if="!user.username" ng-click="gotoSelection('login')">
+									<p class="md-body-2">Entrar</p>
+									<span flex></span>
+									<md-icon>chevron_right</md-icon>
+								</md-list-item>
+								<md-list-item ng-if="user.username" ng-click="gotoSelection('perfil')">
+									<p class="md-body-2">Perfil</p>
+									<span flex></span>
+									<md-icon>chevron_right</md-icon>
+								</md-list-item>
+								<md-divider ng-if="user.username"></md-divider>
+								<md-list-item ng-if="user.username" ng-click="logout()">
+									<p class="md-body-2">Sair</p>
+									<span flex></span>
+									<md-icon>chevron_right</md-icon>
+								</md-list-item>
+							</md-menu-content>
+						</md-menu>
+					</div>
+				</div>
 			</md-toolbar>
-			<md-content role="navigation">
-					<md-list-item ng-repeat="item in mainMenuItems" ng-click="gotoSelection(item.location)">
-							<md-icon ng-bind="item.icon"></md-icon>
-							<p class="md-body-2" ng-bind="item.label"></p>
-							<span flex></span>
-							<md-icon ng-bind="item.iconSeparator"></md-icon>
-					</md-list-item>
-			</md-content>
-	</md-sidenav>
-	<section layout="column" role="main" flex>
+			<md-list-item ng-repeat="item in mainMenuItems" 
+			 ng-click="gotoSelection(item.location)">
+				<md-icon ng-bind="item.icon"></md-icon>
+				<p class="md-body-2" ng-bind="item.label"></p>
+				<span flex></span>
+				<md-icon ng-bind="item.iconSeparator"></md-icon>
+			</md-list-item>
+		</md-sidenav>
+		<section layout="column" role="main" flex>
 			<md-toolbar md-scroll-shrink role="toolbar">
 				<div class="md-toolbar-tools">
-						<md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
-								<md-icon>menu</md-icon>
-								<md-tooltip>
-										Abrir menu
-								</md-tooltip>
-						</md-button> 
-						<h4 hide-xs class="md-title" ng-bind="titulo"></h4>
-						<span flex></span>
+					<md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
+						<md-icon>menu</md-icon>
+						<md-tooltip>Abrir menu</md-tooltip>
+					</md-button> 
+					<h4 hide-xs class="md-title" ng-bind="titulo"></h4>
+					<span flex></span>
 				</div>
 			</md-toolbar>
 			<section id="content" role="content" layout="column" md-scroll-y>
-					<!--<div class="top-bg md-accent-bg"></div>-->
-					<md-content class="mainContent" ng-cloak>
-							<ng-view></ng-view>
-					</md-content>
+				<md-content class="mainContent" ng-cloak>
+					<ng-view></ng-view>
+				</md-content>
 			</section>
-	</section>
-</body>
+		</section>
+	</body>
 </html>
