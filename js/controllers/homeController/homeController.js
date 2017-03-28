@@ -3,7 +3,8 @@
 
 	angular.module('app.controllers').controller('HomeController', ['$scope', 
 	 function(scope) {
-	 	scope.nome = "Home"
+	 	scope.nome = "Home";	 			 
+
 	}]);
 
 })(window.angular);

@@ -1,6 +1,6 @@
 angular.module("app.services").service("HttpService", 
-    ['$http', '$cookies', '$location', 'toastAlert',
-    function (http, cookies, location, toastAlert) {
+    ['$http', '$cookies', '$location',
+    function (http, cookies, location) {
 
     var contextPath = "http://192.168.0.103:8080/server";
 
@@ -12,13 +12,8 @@ angular.module("app.services").service("HttpService",
             headers: {
                 "X-Auth-Token": cookies.get('X-Auth-Token')
             }            
-        }).then(function(response){
-            return response;
-        
-        }, function(error){
-            //
         });
-    };
+    }
 
     this.post = function (url, obj) {
         return http({
@@ -29,13 +24,8 @@ angular.module("app.services").service("HttpService",
             headers: {
                 "X-Auth-Token": cookies.get('X-Auth-Token')
             }
-        }).then(function(response){
-            return response;
-        
-        }, function(error){
-            toastAlert.defaultToaster('Ops: ' + error.statusText);
         });
-    };
+    }
 
     this.delete = function (id) {
         return http({
@@ -45,12 +35,7 @@ angular.module("app.services").service("HttpService",
             headers: {
                 "X-Auth-Token": cookies.get('X-Auth-Token')
             }
-        }).then(function(response){
-            return response;
-        
-        }, function(error){
-            toastAlert.defaultToaster('Ops: ' + error.statusText);
         });
-    };
+    }
 
 }]);

@@ -1,9 +1,10 @@
 (function (angular) {
 	'use strict';
     var DialogService = (function () {
+        
         function DialogService($mdDialog) {
             this.$mdDialog = $mdDialog;
-        };
+        }
 
         DialogService.prototype.openDialog = function (templateUrl, controller, callBack, ev, parameter) {
             var self = this;
@@ -19,15 +20,16 @@
             }).then(function(response) {
                 callBack(response);
             }, function() {
-                //console.log('cancelado');
+                
             });
-        };
+        }
 
         DialogService.$inject = [
             '$mdDialog'
         ];
 
         return DialogService;
+        
     }());
 
     angular.module('app.services').service('modalService', DialogService);

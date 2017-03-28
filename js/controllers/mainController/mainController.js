@@ -1,12 +1,12 @@
 (function (angular) {
 	'use strict';
 	angular.module('app.controllers').controller('MainController', 
-		['$scope', '$mdSidenav','$location','LoginService','$mdDialog',
-	 	function(scope, mdSidenav, location, loginService, mdDialog) {
+		['$scope', '$mdSidenav','$location','LoginService',
+	 	function(scope, mdSidenav, location, loginService) {
 	 	
 		scope.$on('usuarioLogado', function(){
 			getUsuarioLogado();
-		});
+		})		
 
 		var getUsuarioLogado = function() {
 			loginService.userLogged().then(function (result) {
@@ -45,18 +45,19 @@
 		scope.gotoSelection = function (routeToGo) {
 			mdSidenav('left').toggle();
 			location.url(routeToGo);
-		};
+		}
 
 		scope.logout = function () {
 			loginService.logout();
 			setTimeout(function(){
 				scope.user = {};
-			}, 50);
-		};
+				location.path("/home");
+			}, 50);			
+		}
 
 		scope.openMenu = function($mdOpenMenu, ev) {
 			$mdOpenMenu(ev);
-		};
+		}
 
 		getUsuarioLogado();
 

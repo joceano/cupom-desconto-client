@@ -16,9 +16,9 @@
 		}).when('/login', {
 			templateUrl: 'partials/login.html',
 			controller: 'LoginController'
-		}).when('/categoria', {
-			templateUrl: 'partials/categoria.html',
-			controller: 'CategoriaController'
+		}).when('/perfil', {
+			templateUrl: 'partials/perfil.html',
+			controller: 'PerfilController'		
 		}).otherwise({
 			redirectTo: '/home'
 		});

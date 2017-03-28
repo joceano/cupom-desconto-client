@@ -1,8 +1,8 @@
-<md-dialog aria-label="Cadastro de categorias">
+<md-dialog aria-label="Cadastro de Cupons">
 	<form ng-cloak name="formCadastro">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>Cadastro de categorias</h2>
+				<h2>Cadastro de Cupons</h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="cancel()">
 					<md-icon aria-label="Fechar janela">close</md-icon>
@@ -10,29 +10,29 @@
 			</div>
 		</md-toolbar>
 		<md-dialog-content>
-			<div layout-gt-sm="row">				
+			<div layout-gt-sm="row" layout-padding>				
 				<md-input-container>
 					<label>Código</label>
-					<input ng-disabled="true" ng-model="categoria.id"/>
+					<input ng-disabled="true" ng-model=""/>
 				</md-input-container>
 				<div flex="5" hide-xs hide-sm></div>
 				<md-input-container class="md-block" flex-gt-sm>
 					<label>Descrição</label>
-					<input required name="descricao" ng-model="categoria.descricao"/>
-					<div ng-messages="formCadastro.descricao.$error">
+					<input required name="nome" ng-model="cupom.nome"/>
+					<div ng-messages="formCadastro.nome.$error">
 						<div ng-message="required">Descrição é necessária.</div>
 					</div>
 				</md-input-container>
 			</div>
 		</md-dialog-content>
-		<md-dialog-actions layout="row">
+		<md-dialog-actions layout="row" layout-padding>
 			<span flex></span>
-			<md-button class="md-primary" ng-if="categoria.id" 
-			 ng-click="delete(categoria)">
+			<md-button class="md-primary" ng-if="" 
+			 ng-click="delete(cupom)">
 				Excluir
 			</md-button>
 			<md-button class="md-primary" ng-disabled="formCadastro.$invalid" 
-			 ng-click="save(categoria)">
+			 ng-click="save(cupom)">
 				Salvar
 			</md-button>
 		</md-dialog-actions>

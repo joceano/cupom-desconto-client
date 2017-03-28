@@ -1,0 +1,33 @@
+<div layout="column" flex layout-fill ng-cloak >
+	<md-content style="height: 90vh;">
+		<section class="back-fff">		
+			<md-tabs md-dynamic-height md-border-bottom>							
+				<md-tab label="Cupons" md-on-select="setSelectedIndex(0)">
+					<md-content class="md-padding">
+						<!--<cupom cupons="cupons"></cupom>-->
+						<h4>Cupons</h4>
+					</md-content>
+				</md-tab>
+				<md-tab label="Anúncios" md-on-select="setSelectedIndex(1)">
+					<md-content class="md-padding">
+						<h4>Anúncios</h4>						
+					</md-content>
+				</md-tab>				
+				<md-tab label="Categorias" md-on-select="setSelectedIndex(2)">
+					<md-content class="md-padding">
+						<categoria categorias="categorias"></categoria>						
+					</md-content>
+				</md-tab>
+				<md-tab label="Usuários" md-on-select="setSelectedIndex(3)">
+					<md-content class="md-padding">
+						<h4>Usuários</h4>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+			<md-button style="position: fixed;bottom: 10px;right: 10px;" class="md-fab md-primary" 
+	 		 aria-label="Adicionar novo" ng-click="openDialog($event, selectedIndex )">
+				<md-icon>add</md-icon>
+			</md-button>
+		</section>		
+	</md-content>
+</div>

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app').factory('toastAlert', toastAlert);
+    angular.module('app.factories').factory('toastAlert', toastAlert);
 
     toastAlert.$inject = ['$mdToast'];
 

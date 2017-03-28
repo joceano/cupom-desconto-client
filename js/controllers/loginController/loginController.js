@@ -7,6 +7,6 @@ angular.module("app.controllers").controller("LoginController", ['$scope', 'Logi
             location.hash = "/";
             scope.$emit('usuarioLogado');
         });
-    };
+    }
 
 }]);

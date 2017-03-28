@@ -23,27 +23,38 @@
 		<script src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
 		<script src="bower_components/angular-avatar/dist/angular-avatar.js"></script>
 
-		<script src="js/app.js"></script>
-		<script src="js/controllers/controllers.js"></script>
-		<script src="js/directives/directives.js"></script>
-		<script src="js/config/config.js"></script>
-		<script src="js/services/services.js"></script>
+		<script src="js/app.js"></script>		
+		<script src="js/config/config.js"></script>		
 
-		<!-- Controllers -->
+		<!-- Controllers -->		
+		<script src="js/controllers/controllers.js"></script>
+		<script src="js/controllers/perfilController/perfilController.js"></script>
 		<script src="js/controllers/mainController/mainController.js"></script>
 		<script src="js/controllers/homeController/homeController.js"></script>
 		<script src="js/controllers/contatoController/contatoController.js"></script>
 		<script src="js/controllers/loginController/loginController.js"></script>
 		<script src="js/controllers/categoriaController/categoriaController.js"></script>
-		<script src="js/controllers/categoriaController/categoriaDialogController.js"></script>
+		<script src="js/controllers/categoriaController/categoriaDialogController.js"></script>		
+		<script src="js/controllers/cuponsController/cuponsController.js"></script>
+		<script src="js/controllers/cuponsController/cuponsDialogController.js"></script>
 
 		<!-- Services -->
+		<script src="js/services/services.js"></script>
 		<script src="js/services/httpService/httpService.js"></script>
 		<script src="js/services/loginService/loginService.js"></script>
 		<script src="js/services/modalService/modalService.js"></script>
 
 		<!-- Factories -->
+		<script src="js/factories/factories.js"></script>
 		<script src="js/factories/toastFactory/toastFactory.js"></script>
+
+		<!-- Components -->		
+		<script src="js/components/components.js"></script>
+		<script src="js/components/cuponsComponent/cuponsComponent.js"></script>
+		<script src="js/components/categoriasComponent/categoriasComponent.js"></script>
+
+		<!-- Directives -->
+		<script src="js/directives/directives.js"></script>
 
 	</head>
 	<body ng-controller="MainController">
@@ -53,7 +64,7 @@
 					<div ng-if="user.username">
 						<img ng-src="/img/60.png" class="md-avatar" alt="" />
 					</div>
-					<div style="cursor: pointer;" ng-click="gotoSelection('profile')" 
+					<div style="cursor: pointer;" 
 					 layout="column">
 						<span class="md-title" ng-bind="user.name"></span>
 						<span class="md-subhead" ng-bind="user.username"></span>
