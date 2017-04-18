@@ -1,5 +1,3 @@
-        
-
 <md-dialog aria-label="Cadastro de categorias">
 	<form ng-cloak name="formCadastro">
 		<md-toolbar>
@@ -10,37 +8,21 @@
 					<md-icon aria-label="Fechar janela">close</md-icon>
 				</md-button>
 			</div>
-		</md-toolbar>		
-		<div layout-padding>				
-			<md-dialog-content>
-				<div layout-gt-sm="row">				
-					<md-input-container>
-						<label>Código</label>
-						<input ng-disabled="true" ng-model="categoria.id"/>
-					</md-input-container>
-					<div flex="5" hide-xs hide-sm></div>
-					<md-input-container class="md-block" flex-gt-sm>
-						<label>Descrição</label>
-						<input required name="descricao" ng-model="categoria.descricao"/>
-						<div ng-messages="formCadastro.descricao.$error">
-							<div ng-message="required">Descrição é necessária.</div>
-						</div>
-					</md-input-container>
-				</div>		
-			</md-dialog-content>
-		</div>
-		<div layout-padding>
-			<md-dialog-actions layout="row">
-				<span flex></span>
-				<md-button class="md-raised md-warn" ng-if="categoria.id" 
-				 ng-click="delete(categoria)">
-					Excluir
-				</md-button>
-				<md-button class="md-raised md-primary" ng-disabled="formCadastro.$invalid" 
-				 ng-click="save(categoria)">
-					Salvar
-				</md-button>
-			</md-dialog-actions>
-		</div>	
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Descrição</label>
+					<input required name="descricao" ng-model="categoria.descricao" md-maxlength="80"/>
+					<div ng-messages="formCadastro.descricao.$error">
+						<div ng-message="required">A descrição é obrigatória.</div>
+					</div>
+				</md-input-container>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-if="categoria.id" ng-click="delete(categoria)">Excluir</md-button>
+			<md-button ng-disabled="formCadastro.$invalid" ng-click="save(categoria)">Salvar</md-button>
+		</md-dialog-actions>
 	</form>
 </md-dialog>

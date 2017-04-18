@@ -1,6 +1,6 @@
 body {
 		overflow: hidden;
-		background-color: #eeeded !important;
+		/*background-color: #eeeded !important;*/
 }
 
 ::-webkit-scrollbar {
@@ -109,6 +109,9 @@ md-card md-card-header md-card-avatar {
 				float: left;
 				width: 33%;
 		}
+		md-dialog {			
+			width: 50%;
+		}		
 }
 
 .filter md-contact-chips {
@@ -191,7 +194,6 @@ md-select-menu md-content._md.md-no-flicker {
 md-dialog .md-dialog-content {
 	padding: 10px !important;
 }
-
 
 .borderColorGreen {
 	border-left:2px solid #009688;
@@ -304,7 +306,7 @@ md-dialog .md-dialog-content {
     height: 70px;
 }
 .back-fff {
-	background-color: #fff;
+	/*background-color: #fff;*/
 }
 .btn-bottom {
 	position: fixed;
@@ -317,4 +319,7 @@ md-dialog .md-dialog-content {
 }
 .avatarCadastro {
 	margin-right: 15px; 
+}
+#testee {
+	display: none !important;
 }

@@ -3,6 +3,6 @@
 	
 	angular.module('app.components').component('cupom', {
 	  templateUrl: 'partials/components/cupom.html',
-	  controller: 'CuponsController'
+	  controller: 'CupomController'
 	});
 })(window.angular);

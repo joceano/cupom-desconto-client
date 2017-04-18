@@ -1,13 +1,13 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('app.controllers').controller('CuponsController', ['$scope','modalService', 
+	angular.module('app.controllers').controller('CupomController', ['$scope','modalService', 
         function(scope, modalService) {
     
         scope.openDialog = function(ev, cupom) {
             var cupomCopia = angular.copy(cupom)
             modalService.openDialog(
-                'partials/components/dialog/cupomDialog.html', 'CuponsDialogController',
+                'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
                 callBack, ev, cupomCopia
             );
         };

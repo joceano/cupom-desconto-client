@@ -1,0 +1,92 @@
+<md-dialog aria-label="Cadastro de anúncios">
+	<form ng-cloak name="formCadastro">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Cadastro de anúncios</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon aria-label="Fechar janela">close</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<md-input-container>
+			        <label>Data Inicial</label>
+			        <md-datepicker required ng-model="anuncio.dataInicial" md-hide-icons="calendar" 
+			         name="dataInicial"></md-datepicker>
+			        <div ng-messages="formCadastro.dataInicial.$error">			          
+			        	<div ng-message="required">A data inicial é obrigatória.</div>
+			        </div>
+			    </md-input-container>
+				<md-input-container>
+			        <label>Data Final</label>
+			        <md-datepicker required ng-model="anuncio.dataFinal" md-hide-icons="calendar"
+			         name="dataFinal"></md-datepicker>
+			        <div ng-messages="formCadastro.dataFinal.$error">			          
+			        	<div ng-message="required">A data final é obrigatória.</div>
+			        </div>
+			    </md-input-container>
+			    <md-input-container class="md-block" flex-gt-sm>
+					<label>Descrição</label>
+					<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="80"/>
+					<div ng-messages="formCadastro.descricao.$error">
+						<div ng-message="required">A descrição é obrigatória.</div>
+					</div>
+				</md-input-container>
+				<md-autocomplete flex
+		        	required
+		            md-input-name="autocompleteCategoria"
+		            md-selected-item="anuncio.categoria"
+		            md-search-text="searchTextCategoria"
+		            md-items="item in querySearch(searchTextCategoria)"
+		            md-item-text="item.descricao"
+		            md-min-length="0"
+					md-delay="300"			            
+		            md-floating-label="Categoria">
+			        <md-item-template>
+			        	<span md-highlight-text="searchTextCategoria">{{item.descricao}}</span>
+			        </md-item-template>
+			        <md-not-found>
+						Categoria "{{searchTextCategoria}}" não encontrada.			
+					</md-not-found>
+		        </md-autocomplete>
+				<md-input-container class="md-block">
+			      	<label>Preço</label>			     
+			      	<input ng-model="anuncio.preco" type="number" step="0.01">			      
+			    </md-input-container>
+			    <md-input-container class="md-block">
+			      	<label>Preço Promo</label>			     
+			      	<input ng-model="anuncio.precoPromo" type="number" step="0.01">			      
+			    </md-input-container>
+				<md-input-container class="md-block">
+			      	<label>Quantidade</label>			     
+			      	<input ng-model="anuncio.quantidade" type="number">			      
+			    </md-input-container>
+			    <md-input-container class="md-block">
+			      	<label>Quantidade Cli</label>			     
+			      	<input ng-model="anuncio.quantidadeCli" type="number">			      
+			    </md-input-container>
+		        <md-input-container class="md-block">
+		        	<label>Detalhes</label>
+		          	<textarea ng-model="anuncio.detalhe" md-maxlength="255"
+		          	 md-select-on-focus></textarea>
+		        </md-input-container>
+				<md-input-container class="md-block">
+		        	<label>Regulamento</label>
+		          	<textarea ng-model="anuncio.regulamento" md-maxlength="255"
+		          	 md-select-on-focus></textarea>
+		        </md-input-container>	
+		        <div>
+		        	<md-checkbox ng-model="ativo" aria-label="Ativo">Ativo</md-checkbox>
+		        	<md-checkbox ng-model="aprovado" aria-label="Aprovado">Aprovado</md-checkbox>
+		        </div>			
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-if="anuncio.id" ng-click="delete(anuncio)">Excluir</md-button>
+			<md-button ng-disabled="formCadastro.$invalid" 
+			 ng-click="save(anuncio, ativo, aprovado)">Salvar</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

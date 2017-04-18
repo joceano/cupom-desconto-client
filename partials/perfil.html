@@ -1,7 +1,7 @@
-<div layout="column" flex layout-fill ng-cloak >
+<div layout="column" flex layout-fill ng-cloak ng-if="user">
 	<md-content style="height: 90vh;">
 		<section class="back-fff">		
-			<md-tabs md-dynamic-height md-border-bottom>							
+			<md-tabs md-dynamic-height>							
 				<md-tab label="Cupons" md-on-select="setSelectedIndex(0)">
 					<md-content class="md-padding">
 						<!--<cupom cupons="cupons"></cupom>-->
@@ -10,17 +10,23 @@
 				</md-tab>
 				<md-tab label="Anúncios" md-on-select="setSelectedIndex(1)">
 					<md-content class="md-padding">
-						<h4>Anúncios</h4>						
+						<anuncio anuncios="anuncios"></anuncio>
 					</md-content>
 				</md-tab>				
-				<md-tab label="Categorias" md-on-select="setSelectedIndex(2)">
+				<md-tab label="Categorias" md-on-select="setSelectedIndex(2)" ng-if="userAdmin">
 					<md-content class="md-padding">
-						<categoria categorias="categorias"></categoria>						
+						<categoria categorias="categorias"></categoria>
 					</md-content>
 				</md-tab>
-				<md-tab label="Usuários" md-on-select="setSelectedIndex(3)">
+				<md-tab label="Usuários" md-on-select="setSelectedIndex(3)" ng-if="userAdmin">
 					<md-content class="md-padding">
 						<h4>Usuários</h4>
+					</md-content>
+				</md-tab>
+				<md-tab label="Meu Cadastro" md-on-select="setSelectedIndex(4)" 
+				 ng-if="user && !userAdmin">
+					<md-content class="md-padding">
+						<h4>Meu Cadastro</h4>
 					</md-content>
 				</md-tab>
 			</md-tabs>
