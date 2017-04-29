@@ -1,4 +1,4 @@
 (function(angular) {
 	'use strict';
-	angular.module('app.controllers', ['ngMaterial', 'ngAvatar']);
+	angular.module('app.controllers', ['ngMaterial']);
 })(window.angular);

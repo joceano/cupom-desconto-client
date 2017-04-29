@@ -1,19 +1,20 @@
-<div layout="row" layout-sm="row" layout-align="center center" ng-if="loading">
+<div layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
 	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 <div layout="column" flex layout-fill ng-cloak ng-if="!loading">
 	<md-content style="height: 78vh;">
 		<section class="back-fff">						
-			<md-subheader class="md-primary">Lista de Anúncios</md-subheader>			
+			<md-subheader class="md-primary">Lista de Usuários</md-subheader>			
 			<md-list>
 				<md-list-item class="md-2-line" 
-				 ng-repeat="anuncio in anuncios | orderBy: 'descricao'" 
-				 ng-click="openDialog($event, anuncio)">
-					<ng-avatar initials="{{anuncio.descricao.substring(0,1)}}" 
+				 ng-repeat="usuario in usuarios | orderBy: 'name'" 
+				 ng-click="openDialog($event, usuario)">
+					<ng-avatar initials="{{usuario.name.substring(0,1)}}" 
 					 auto-color="true" round-shape="true" upper-case="true" 
 					 class="avatarCadastro"></ng-avatar>       		
 					<div class="md-list-item-text">						
-						<h3>{{anuncio.descricao}}</h3>
+						<h3>{{usuario.name}}</h3>	
+						<p>{{usuario.username}}</p>
 					</div>
 					<md-divider></md-divider>
 				</md-list-item>

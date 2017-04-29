@@ -17,7 +17,7 @@ angular.module("app.services").service("LoginService",
     }
 
     this.logout = function () {
-        cookies.remove('X-Auth-Token');
+        cookies.remove('X-Auth-Token');        
         this.userLogged();
     }
 

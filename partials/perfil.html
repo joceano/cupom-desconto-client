@@ -20,7 +20,7 @@
 				</md-tab>
 				<md-tab label="Usuários" md-on-select="setSelectedIndex(3)" ng-if="userAdmin">
 					<md-content class="md-padding">
-						<h4>Usuários</h4>
+						<usuario usuarios="usuarios"></usuario>
 					</md-content>
 				</md-tab>
 				<md-tab label="Meu Cadastro" md-on-select="setSelectedIndex(4)" 
@@ -30,8 +30,10 @@
 					</md-content>
 				</md-tab>
 			</md-tabs>
-			<md-button style="position: fixed;bottom: 10px;right: 10px;" class="md-fab md-primary" 
-	 		 aria-label="Adicionar novo" ng-click="openDialog($event, selectedIndex )">
+			<md-button ng-if="selectedIndex != 3 && selectedIndex != 0" 
+			 style="position: fixed;bottom: 10px;right: 10px;" 
+			 class="md-fab md-primary" aria-label="Adicionar novo" 
+			 ng-click="openDialog($event, selectedIndex )">
 				<md-icon>add</md-icon>
 			</md-button>
 		</section>		

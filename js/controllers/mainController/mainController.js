@@ -9,7 +9,7 @@
 		})		
 
 		var getUsuarioLogado = function() {
-			loginService.userLogged().then(function (result) {
+			loginService.userLogged().then(function (result) {				
 				scope.user = result.data;
 			});
 		};			 	

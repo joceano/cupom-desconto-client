@@ -2,64 +2,25 @@
     'use strict';
 
     angular.module('app.controllers').controller('AnuncioDialogController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) {            
-        
-        const _Sim = 'SIM';
-        const _Nao = 'NAO';    
+        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert', 'LoginService',
+        function(scope, httpService, mdDialog, locals, toastAlert, loginService) {                   
 
         if(locals) {
             locals.dataInicial = new Date(locals.dataInicial);
             locals.dataFinal = new Date(locals.dataFinal);            
             scope.anuncio = locals;
-            tratarAnuncioParaTela(locals);
         } else {
-             scope.anuncio = {};
+            scope.anuncio = {};
+            scope.anuncio.ativo = true;       
+            scope.anuncio.aprovado = false;    
         }
-        
-        function tratarAnuncioParaTela(anuncio) {
-            tratarAprovadoParaTela(anuncio.aprovado);
-            tratarAtivoParaTela(anuncio.ativo);                        
-        }
-
-        function tratarAtivoParaTela(ativo) {
-            scope.ativo = false;
-            if (ativo == _Sim) {
-                scope.ativo = true;
-            }
-        }
-
-        function tratarAprovadoParaTela(aprovado) {
-            scope.aprovado = false;
-            if (aprovado == _Sim) {
-                scope.aprovado = true;
-            }
-        } 
 
         scope.cancel = function() {
             mdDialog.cancel();
         }
 
-        var tratarAtivoParaGravar = function(ativo) {            
-            if (ativo) {
-                return _Sim;
-            } else {
-                return _Nao;
-            }
-        };
-
-        var tratarAprovadoParaGravar = function(aprovado) {            
-            if (aprovado) {
-                return _Sim;
-            } else {
-                return _Nao;
-            }
-        };
-
-        scope.save = function(anuncio, ativo, aprovado) {
-            scope.loading = true;  
-            anuncio.ativo = tratarAtivoParaGravar(ativo);
-            anuncio.aprovado = tratarAprovadoParaGravar(aprovado);
+        scope.save = function(anuncio) {
+            scope.loading = true;
             httpService.post('/anuncio/', anuncio).then(function(res) {
                 scope.loading = false;
                 anuncio.id = res.data.id;
@@ -89,6 +50,20 @@
                     return res.data;
                 });
             }
-        }        
+        } 
+
+        var getUsuarioLogado = function() {
+            loginService.userLogged().then(function (result) {
+                scope.user = result.data.roles;
+                if (result.data.roles == 'ROLE_ADMIN') {
+                    scope.userAdmin = result.data.roles;   
+                } else {
+                    scope.userAdmin = null;
+                }
+            });
+        }; 
+
+        getUsuarioLogado();
+
     }]);
 })(window.angular);
