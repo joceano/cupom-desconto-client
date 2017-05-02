@@ -1,5 +1,5 @@
-angular.module("app.controllers").controller("LoginController", ['$scope', 'LoginService',
-	function (scope, loginService) {
+angular.module("app.controllers").controller("LoginController", ['$scope', 'LoginService', 'modalService',
+	function (scope, loginService, modalService) {
 
     scope.auth = function (login) {
         loginService.auth(login).then(function (result) {
@@ -7,6 +7,13 @@ angular.module("app.controllers").controller("LoginController", ['$scope', 'Logi
             location.hash = "/";            
             scope.$emit('usuarioLogado');
         });
+    }
+
+    scope.openDialog = function(ev) {        
+        modalService.openDialog(
+            'partials/components/dialog/novoUsuarioDialog.html', 'NovoUsuarioDialogController',
+            null, ev, null
+        );
     }
 
 }]);

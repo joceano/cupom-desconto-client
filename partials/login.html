@@ -30,7 +30,7 @@
 			<md-card-content layout="column">
 				<md-button class="md-raised md-primary" flex ng-disabled="!formLogin.$valid" 
 				 class="btn btn-lg btn-primary btn-block" type="submit">Entrar</md-button>
-				<md-button md-no-ink class="md-primary" flex>Cadastre-se</md-button>
+				<md-button ng-click="openDialog($event)" md-no-ink class="md-primary" flex>Cadastre-se</md-button>
 			</md-card-content>		
 		</form>
 	</md-card>

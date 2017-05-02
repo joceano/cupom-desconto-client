@@ -10,27 +10,27 @@
 				</md-tab>
 				<md-tab label="Anúncios" md-on-select="setSelectedIndex(1)">
 					<md-content class="md-padding">
-						<anuncio anuncios="anuncios"></anuncio>
+						<anuncio></anuncio>
 					</md-content>
 				</md-tab>				
 				<md-tab label="Categorias" md-on-select="setSelectedIndex(2)" ng-if="userAdmin">
 					<md-content class="md-padding">
-						<categoria categorias="categorias"></categoria>
+						<categoria></categoria>
 					</md-content>
 				</md-tab>
 				<md-tab label="Usuários" md-on-select="setSelectedIndex(3)" ng-if="userAdmin">
 					<md-content class="md-padding">
-						<usuario usuarios="usuarios"></usuario>
+						<usuario></usuario>
 					</md-content>
 				</md-tab>
-				<md-tab label="Meu Cadastro" md-on-select="setSelectedIndex(4)" 
+				<md-tab label="Cadastro" md-on-select="setSelectedIndex(4)" 
 				 ng-if="user && !userAdmin">
 					<md-content class="md-padding">
-						<h4>Meu Cadastro</h4>
+						<meucadastro></meucadastro>
 					</md-content>
 				</md-tab>
 			</md-tabs>
-			<md-button ng-if="selectedIndex != 3 && selectedIndex != 0" 
+			<md-button ng-if="selectedIndex == 1 || selectedIndex == 2" 
 			 style="position: fixed;bottom: 10px;right: 10px;" 
 			 class="md-fab md-primary" aria-label="Adicionar novo" 
 			 ng-click="openDialog($event, selectedIndex )">

@@ -21,7 +21,7 @@
 				<md-input-container class="md-block" flex-gt-sm>
 					<label>E-mail</label>
 					<input required type="email" name="email" ng-model="usuario.username" 
-					 disabled md-maxlength="80"/>
+					 md-maxlength="80"/>
 					<div ng-messages="formCadastro.email.$error">
 						<div ng-message="required">O e-mail é obrigatório.</div>
 						<div ng-message="email" >O e-mail é inválido.</div>
@@ -32,27 +32,23 @@
 					<input type="text" name="telefone" ng-model="usuario.telefone" ui-br-phone-number/>
 				</md-input-container>
 				<md-input-container class="md-block" flex-gt-sm>
-					<label>Nova Senha</label>
-					<input type="password" name="senha" ng-model="senha" md-maxlength="80"/>
+					<label>Senha</label>
+					<input required type="password" name="senha" ng-model="senha" md-maxlength="80"/>
+					<div ng-messages="formCadastro.senha.$error">
+						<div ng-message="required">A senha é obrigatória.</div>
+					</div>
 				</md-input-container>
 				<md-input-container class="md-block" flex-gt-sm>
 					<label>Repita a Senha</label>
-					<input type="password" name="novaSenha" ng-model="novaSenha" md-maxlength="80"/>
+					<input required type="password" name="novaSenha" ng-model="novaSenha" md-maxlength="80"/>
 					<span id="senhas" ng-if="senha != novaSenha">As senhas não conferem.</span>
-				</md-input-container>
-		        <div>
-		        	<md-checkbox ng-model="usuario.enabled" aria-label="Ativo">Ativo</md-checkbox>
-		        	<md-checkbox ng-model="role" 
-		        	 aria-label="Administrador">Administrador</md-checkbox>
-		        </div>			
+				</md-input-container>		
 			</div>
 		</md-dialog-content>
-		<md-dialog-actions layout="row">
-			<md-button ng-if="usuario.id" ng-click="delete(usuario)">Excluir</md-button>
+		<md-dialog-actions layout="row">			
 			<md-button 
-			 ng-disabled="(formCadastro.$invalid) || (senha && senha!=novaSenha) || 
-			 (novaSenha && senha!=novaSenha)"
-			 ng-click="save(usuario, senha, role)">Salvar</md-button>
+			 ng-disabled="(formCadastro.$invalid) || (senha!=novaSenha) || (!senha) || (!novaSenha)"
+			 ng-click="save(usuario, senha)">Salvar</md-button>
 		</md-dialog-actions>
 	</form>
 </md-dialog>
