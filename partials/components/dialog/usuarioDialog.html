@@ -11,39 +11,47 @@
 		</md-toolbar>
 		<md-dialog-content>
 			<div class="md-dialog-content">
-			    <md-input-container class="md-block" flex-gt-sm>
-					<label>Nome</label>
-					<input required name="nome" ng-model="usuario.name" md-maxlength="80"/>
-					<div ng-messages="formCadastro.nome.$error">
-						<div ng-message="required">O nome é obrigatório.</div>
+				<div class="md-dialog-content">
+					<md-input-container class="md-block" flex-gt-sm flex="60">
+						<label>E-mail</label>
+						<input required type="email" name="email" ng-model="usuario.username" 
+						 disabled/>
+						<div ng-messages="formCadastro.email.$error" ng-show="formCadastro.email.$invalid">
+							<div ng-message="required">O e-mail é obrigatório.</div>
+							<div ng-message="email" >O e-mail é inválido.</div>
+						</div>
+					</md-input-container>
+				    <md-input-container class="md-block" flex-gt-sm>
+						<label>Nome</label>
+						<input required name="nome" ng-model="usuario.name" md-maxlength="80"/>
+						<div ng-messages="formCadastro.nome.$error" ng-show="formCadastro.nome.$invalid">
+							<div ng-message="required">O nome é obrigatório.</div>
+						</div>
+					</md-input-container>
+					<md-input-container class="md-block" flex-gt-sm>
+						<label>Telefone</label>
+						<input type="text" name="telefone" ng-model="usuario.telefone" ui-br-phone-number/>
+					</md-input-container>
+					<div layout="row">
+						<md-input-container class="md-block" flex-gt-sm flex="50">
+							<label>Nova Senha</label>
+							<input type="password" name="senha" ng-model="senha" ng-minlength="8"/>
+							<div ng-messages="formCadastro.senha.$error" 
+							     ng-show="(senha && senha!=novaSenha) || (novaSenha && senha!=novaSenha)">
+								<div ng-message="minlength">As senhas não conferem. Sua senha deve conter 
+								 no mínimo 8 caracteres.</div>
+							</div> 
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-sm flex="50">
+							<label>Repita a Senha</label>
+							<input type="password" name="novaSenha" ng-model="novaSenha"/>
+						</md-input-container>
 					</div>
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>E-mail</label>
-					<input required type="email" name="email" ng-model="usuario.username" 
-					 disabled md-maxlength="80"/>
-					<div ng-messages="formCadastro.email.$error">
-						<div ng-message="required">O e-mail é obrigatório.</div>
-						<div ng-message="email" >O e-mail é inválido.</div>
-					</div>
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Telefone</label>
-					<input type="text" name="telefone" ng-model="usuario.telefone" ui-br-phone-number/>
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Nova Senha</label>
-					<input type="password" name="senha" ng-model="senha" md-maxlength="80"/>
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Repita a Senha</label>
-					<input type="password" name="novaSenha" ng-model="novaSenha" md-maxlength="80"/>
-					<span id="senhas" ng-if="senha != novaSenha">As senhas não conferem.</span>
-				</md-input-container>
-		        <div>
-		        	<md-checkbox ng-model="usuario.enabled" aria-label="Ativo">Ativo</md-checkbox>
-		        	<md-checkbox ng-model="role" 
-		        	 aria-label="Administrador">Administrador</md-checkbox>
+					<div>
+			        	<md-checkbox ng-model="usuario.enabled" aria-label="Ativo">Ativo</md-checkbox>
+			        	<md-checkbox ng-model="role" 
+			        	 aria-label="Administrador">Administrador</md-checkbox>
+			        </div>
 		        </div>			
 			</div>
 		</md-dialog-content>

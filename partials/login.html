@@ -13,7 +13,7 @@
 					<label>E-mail</label>
 				  	<md-icon>person</md-icon>
 				  	<input type="email" name="email" ng-model="login.username" required=""/>
-				  	<div ng-messages="formLogin.email.$error" role="alert">
+				  	<div ng-messages="formLogin.email.$error" role="alert" ng-show="formLogin.email.$invalid">
 						<div ng-message="required" class="my-message">Informe seu e-mail.</div>
 						<div ng-message="email" class="my-message">E-mail inválido.</div>
 				  	</div>
@@ -22,7 +22,8 @@
 					<label>Senha</label>
 				  	<md-icon>https</md-icon>
 				  	<input type="password" name="password" ng-model="login.password" required=""/>
-				  	<div ng-messages="formLogin.password.$error" role="alert">
+				  	<div ng-messages="formLogin.password.$error" 
+				  	 role="alert" ng-show="formLogin.password.$invalid">
 						<div ng-message="required" class="my-message">Informe sua senha.</div>
 				  	</div>
 				</md-input-container>								 
@@ -30,7 +31,12 @@
 			<md-card-content layout="column">
 				<md-button class="md-raised md-primary" flex ng-disabled="!formLogin.$valid" 
 				 class="btn btn-lg btn-primary btn-block" type="submit">Entrar</md-button>
-				<md-button ng-click="openDialog($event)" md-no-ink class="md-primary" flex>Cadastre-se</md-button>
+				<div layout="row" flex="70" layout-align="center center">
+					<md-button ng-click="openDialog($event)" class="md-primary" 
+					 flex="35">Cadastre-se</md-button>
+					<md-button ng-click="" class="md-primary" 
+					 flex="35">Esqueci a senha</md-button>
+				</div>
 			</md-card-content>		
 		</form>
 	</md-card>

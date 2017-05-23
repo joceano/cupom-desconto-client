@@ -11,13 +11,17 @@
 		</md-toolbar>
 		<md-dialog-content>
 			<div class="md-dialog-content">
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Descrição</label>
-					<input required name="descricao" ng-model="categoria.descricao" md-maxlength="80"/>
-					<div ng-messages="formCadastro.descricao.$error">
-						<div ng-message="required">A descrição é obrigatória.</div>
-					</div>
-				</md-input-container>
+				<div class="md-dialog-content">
+					<md-input-container class="md-block" flex-gt-sm>
+						<label>Descrição</label>
+						<input required name="descricao" ng-model="categoria.descricao" 
+						 md-maxlength="80"/>
+						<div ng-messages="formCadastro.descricao.$error" 
+						 ng-show="formCadastro.descricao.$invalid">
+							<div ng-message="required">A descrição é obrigatória.</div>
+						</div>
+					</md-input-container>
+				</div>
 			</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">

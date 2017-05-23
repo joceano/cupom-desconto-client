@@ -106,14 +106,47 @@ md-card md-card-header md-card-avatar {
 
 @media (min-width: 960px) {
 		.filter .search-item {
-				float: left;
-				width: 33%;
-		}
+			float: left;
+			width: 33%;
+		}		
 		md-dialog {			
 			width: 50%;
-		}		
+		}	
+}
+@media (max-width: 960px) {
+	 .anuncioImagem {
+		max-width: 400px;
+		max-height: 250px;
+		margin-left: auto;
+		margin-right: auto;
+		
+	} 
+}	
+/*
+@media (max-width: 959px) {
+	.cardAnuncio {
+		margin-top: 65px;
+	}
+}	
+
+@media (max-width: 940px) {
+	.cardAnuncio {
+		margin-top: 45px;
+	}
 }
 
+@media (max-width: 920px) {
+	.cardAnuncio {
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 900px) {
+	.cardAnuncio {
+		margin-top: 10px;
+	}
+}
+*/
 .filter md-contact-chips {
 		margin-bottom: 10px;
 }
@@ -320,11 +353,37 @@ md-dialog .md-dialog-content {
 .avatarCadastro {
 	margin-right: 15px; 
 }
-#senhas {
-	font-size: 12px;
-	color: #DB2020;
+.pesquisa {
+	padding-left: 30px !important;
+	padding-right: 30px !important;	
 }
-#formMeuCadastro {
-	padding-left: 15px;
-	padding-right: 15px;
+#pesquisa {
+	margin-bottom: 0px !important; 	
+}
+.content {	
+	padding-top: 0px !important; 
+}
+.anuncioDescricao {
+	font-size: 16px !important;
+	text-align: center !important;
+	border-left:2px solid #CDBA96;
+	background-color: #CDBA96;
+}
+.anuncioPreco {
+	font-size: 14px;
+	text-decoration: line-through;	
+}
+.textCenter {
+	text-align: center;
+}
+.anuncioPrecoPromo {
+	font-size: 18px;
+	font-weight: bold;
+}
+.anuncioValidade {
+	font-size: 12px;
+}
+.anuncioOff {
+	color: green;
+	font-size: 12px;
 }

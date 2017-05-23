@@ -1,1 +1,36 @@
-<h1>{{nome}}</h1>
+<div class="md-padding">
+	<div layout="column" layout-gt-sm="row" layout-wrap>
+		<div flex="25" flex-gt-sm="25" ng-repeat="anuncio in anuncios">
+		    <md-card> 
+	        	<img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagem" alt="imagem">
+		        <md-card-title>
+		          	<md-card-title-text class="descAnuncio">
+		            	<span class="md-headline anuncioDescricao 
+		            	 colorBrown">{{anuncio.descricao.substring(0,30)}}</span>
+		          	</md-card-title-text>
+		        </md-card-title>
+		        <md-card-content>
+		          	<div class="textCenter">
+		          		<span>De: </span>
+		          		<span class="anuncioPreco"> {{anuncio.preco | currency}}</span>
+		          	</div>
+		          	<div class="textCenter"> 
+		          		<span class="anuncioPrecoPromo">Por: </span>
+		          		<span class="anuncioPrecoPromo">{{anuncio.precoPromo | currency}}</span>
+		          	</div>
+		          	</br>
+		          	<div class="textCenter">
+						<span class="anuncioOff">
+							<md-icon>alarm</md-icon>22 restantes
+						</span>
+						<span class="anuncioValidade">até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</span>
+		          	</div>
+		        </md-card-content>
+		        <md-card-actions layout="row" layout-align="end center">
+		          	<md-button>Pegar Cupom</md-button>
+		          	<md-button>Ver Mais</md-button>
+		        </md-card-actions>
+	      	</md-card>
+	  	</div>
+  	</div>
+</div>

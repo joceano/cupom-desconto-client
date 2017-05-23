@@ -11,93 +11,108 @@
 		</md-toolbar>
 		<md-dialog-content>
 			<div class="md-dialog-content">
-				<md-input-container>
-			        <label>Data Inicial</label>
-			        <md-datepicker required ng-model="anuncio.dataInicial" md-hide-icons="calendar" 
-			         name="dataInicial"></md-datepicker>
-			        <div ng-messages="formCadastro.dataInicial.$error">			          
-			        	<div ng-message="required">A data inicial é obrigatória.</div>
+				<div class="md-dialog-content">
+					<md-input-container>
+				        <label>Data Inicial</label>
+				        <md-datepicker required ng-model="anuncio.dataInicial" md-hide-icons="calendar" 
+				         name="dataInicial"></md-datepicker>
+				        <div ng-messages="formCadastro.dataInicial.$error" 
+				         ng-show="formCadastro.dataInicial.$invalid">			          
+				        	<div ng-message="required">A data inicial é obrigatória.</div>
+				        </div>
+				    </md-input-container>
+				    <md-input-container>
+				        <label>Data Final</label>
+				        <md-datepicker required ng-model="anuncio.dataFinal" md-hide-icons="calendar"
+				         name="dataFinal"></md-datepicker>
+				        <div ng-messages="formCadastro.dataFinal.$error" 
+				         ng-show="formCadastro.dataFinal.$invalid">			          
+				        	<div ng-message="required">A data final é obrigatória.</div>
+				        </div>
+				    </md-input-container>
+				    <div layout="row">
+					    <md-input-container class="md-block" flex-gt-sm flex="65">
+							<label>Descrição</label>
+							<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="45"/>
+							<div ng-messages="formCadastro.descricao.$error" 
+							 ng-show="formCadastro.descricao.$invalid">
+								<div ng-message="required">A descrição é obrigatória.</div>
+							</div>
+						</md-input-container>
+					    <md-autocomplete flex="35"
+				        	required
+				            md-input-name="autocompleteCategoria"
+				            md-selected-item="anuncio.categoria"
+				            md-search-text="searchTextCategoria"
+				            md-items="item in querySearch(searchTextCategoria)"
+				            md-item-text="item.descricao"
+				            md-min-length="0"
+							md-delay="300"			            
+				            md-floating-label="Categoria">
+					        <md-item-template>
+					        	<span md-highlight-text="searchTextCategoria">{{item.descricao}}</span>
+					        </md-item-template>
+					        <md-not-found>
+								Categoria "{{searchTextCategoria}}" não encontrada.
+							</md-not-found>
+				        </md-autocomplete>
+				    </div>
+					<div layout="row">
+						<md-input-container class="md-block" flex="50">
+					      	<label>Preço Original</label>
+					      	<input required name="precoOrig" ng-model="anuncio.preco" type="text" 
+					      	 ui-money-mask="2" min="0.01">
+					      	<div ng-messages="formCadastro.precoOrig.$error" 
+					      	 ng-show="formCadastro.precoOrig.$invalid">
+								<div ng-message="required">O preço original é obrigatório.</div>
+							</div>
+					    </md-input-container>
+					    <md-input-container class="md-block" flex="50">
+					      	<label>Preço Promocional</label>
+					      	<input required name="precoPromo" ng-model="anuncio.precoPromo" type="text" 
+					      	 ui-money-mask="2" min="0.01">
+					      	 <div ng-messages="formCadastro.precoPromo.$error" 
+					      	  ng-show="formCadastro.precoPromo.$invalid">
+								<div ng-message="required">O preço promocional é obrigatório.</div>
+							</div>
+					    </md-input-container>
+				    </div>
+				    <div layout="row">
+						<md-input-container class="md-block" flex="50">
+					      	<label>Qtde. Disponível</label>			     
+					      	<input required name="quantidade" ng-model="anuncio.quantidade" 
+					      	 type="text" ui-number-mask="0">
+					      	 <div ng-messages="formCadastro.quantidade.$error" 
+					      	  ng-show="formCadastro.quantidade.$invalid">
+								<div ng-message="required">A quantidade disponível é obrigatória.</div>
+							</div>
+					    </md-input-container>
+					    <md-input-container class="md-block" flex="50">
+					      	<label>Qtde. por Cliente</label>			     
+					      	<input required name="quantidadeCli" ng-model="anuncio.quantidadeCli" 
+					      	 type="text" ui-number-mask="0">
+					      	 <div ng-messages="formCadastro.quantidadeCli.$error" 
+					      	  ng-show="formCadastro.quantidadeCli.$invalid">
+								<div ng-message="required">A quantidade por cliente é obrigatória.</div>
+							</div>
+					    </md-input-container>
+				    </div>
+			        <md-input-container class="md-block">
+			        	<label>Detalhes do Anúncio</label>
+			          	<textarea ng-model="anuncio.detalhe" md-maxlength="255"
+			          	 md-select-on-focus></textarea>
+			        </md-input-container>
+					<md-input-container class="md-block">
+			        	<label>Regulamento do Anúncio</label>
+			          	<textarea ng-model="anuncio.regulamento" md-maxlength="255"
+			          	 md-select-on-focus></textarea>
+			        </md-input-container>	
+			        <div>
+			        	<md-checkbox ng-model="anuncio.ativo" aria-label="Ativo">Ativo</md-checkbox>
+			        	<md-checkbox ng-show="userAdmin" ng-model="anuncio.aprovado" 
+			        	 aria-label="Aprovado">Aprovado</md-checkbox>
 			        </div>
-			    </md-input-container>
-				<md-input-container>
-			        <label>Data Final</label>
-			        <md-datepicker required ng-model="anuncio.dataFinal" md-hide-icons="calendar"
-			         name="dataFinal"></md-datepicker>
-			        <div ng-messages="formCadastro.dataFinal.$error">			          
-			        	<div ng-message="required">A data final é obrigatória.</div>
-			        </div>
-			    </md-input-container>
-			    <md-input-container class="md-block" flex-gt-sm>
-					<label>Descrição</label>
-					<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="80"/>
-					<div ng-messages="formCadastro.descricao.$error">
-						<div ng-message="required">A descrição é obrigatória.</div>
-					</div>
-				</md-input-container>
-				<md-autocomplete flex
-		        	required
-		            md-input-name="autocompleteCategoria"
-		            md-selected-item="anuncio.categoria"
-		            md-search-text="searchTextCategoria"
-		            md-items="item in querySearch(searchTextCategoria)"
-		            md-item-text="item.descricao"
-		            md-min-length="0"
-					md-delay="300"			            
-		            md-floating-label="Categoria">
-			        <md-item-template>
-			        	<span md-highlight-text="searchTextCategoria">{{item.descricao}}</span>
-			        </md-item-template>
-			        <md-not-found>
-						Categoria "{{searchTextCategoria}}" não encontrada.
-					</md-not-found>
-		        </md-autocomplete>
-				<md-input-container class="md-block">
-			      	<label>Preço Original</label>
-			      	<input required name="precoOrig" ng-model="anuncio.preco" type="text" 
-			      	 ui-money-mask="2" min="0.01">
-			      	<div ng-messages="formCadastro.precoOrig.$error">
-						<div ng-message="required">O preço original é obrigatório.</div>
-					</div>
-			    </md-input-container>
-			    <md-input-container class="md-block">
-			      	<label>Preço Promocional</label>
-			      	<input required name="precoPromo" ng-model="anuncio.precoPromo" type="text" 
-			      	 ui-money-mask="2" min="0.01">
-			      	 <div ng-messages="formCadastro.precoPromo.$error">
-						<div ng-message="required">O preço promocional é obrigatório.</div>
-					</div>
-			    </md-input-container>
-				<md-input-container class="md-block">
-			      	<label>Quantidade Disponível</label>			     
-			      	<input required name="quantidade" ng-model="anuncio.quantidade" 
-			      	 type="text" ui-number-mask="0">
-			      	 <div ng-messages="formCadastro.quantidade.$error">
-						<div ng-message="required">A quantidade disponível é obrigatória.</div>
-					</div>
-			    </md-input-container>
-			    <md-input-container class="md-block">
-			      	<label>Quantidade por Cliente</label>			     
-			      	<input required name="quantidadeCli" ng-model="anuncio.quantidadeCli" 
-			      	 type="text" ui-number-mask="0">
-			      	 <div ng-messages="formCadastro.quantidadeCli.$error">
-						<div ng-message="required">A quantidade por cliente é obrigatória.</div>
-					</div>
-			    </md-input-container>
-		        <md-input-container class="md-block">
-		        	<label>Detalhes do Anúncio</label>
-		          	<textarea ng-model="anuncio.detalhe" md-maxlength="255"
-		          	 md-select-on-focus></textarea>
-		        </md-input-container>
-				<md-input-container class="md-block">
-		        	<label>Regulamento do Anúncio</label>
-		          	<textarea ng-model="anuncio.regulamento" md-maxlength="255"
-		          	 md-select-on-focus></textarea>
-		        </md-input-container>	
-		        <div>
-		        	<md-checkbox ng-model="anuncio.ativo" aria-label="Ativo">Ativo</md-checkbox>
-		        	<md-checkbox ng-show="userAdmin" ng-model="anuncio.aprovado" 
-		        	 aria-label="Aprovado">Aprovado</md-checkbox>
-		        </div>			
+		    	</div>    
 			</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
