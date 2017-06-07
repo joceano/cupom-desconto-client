@@ -7,6 +7,14 @@
 
         scope.usuarios = [];
 
+        scope.substring = 200;
+        var mq = window.matchMedia( "(max-width: 680px)" );
+
+        var width = screen.width;        
+        if (mq.matches) {
+            scope.substring = 17;
+        }
+
         var getUsuarios = function() {
             scope.loading = true;
             httpService.get('/user/').then(function(res) {                

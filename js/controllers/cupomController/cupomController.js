@@ -1,20 +1,38 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('app.controllers').controller('CupomController', ['$scope','modalService', 
-        function(scope, modalService) {
+	angular.module('app.controllers').controller('CupomController', 
+        ['$scope','modalService', 'HttpService', '$timeout', 'toastAlert', 
+        function(scope, modalService, httpService, timeout, toastAlert) {
     
-        scope.openDialog = function(ev, cupom) {
-            var cupomCopia = angular.copy(cupom)
-            modalService.openDialog(
-                'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
-                callBack, ev, cupomCopia
-            );
+        scope.cupons = [];
+
+        scope.substring = 200;
+        var mq = window.matchMedia( "(max-width: 680px)" );
+
+        var width = screen.width;        
+        if (mq.matches) {
+            scope.substring = 17;
+        }
+
+        var getCupons = function() {
+            scope.loading = true;
+            httpService.get('/cupom/').then(function(res) {                
+                scope.cupons = res.data; 
+                scope.loading = false;                
+            }, function (error) {                
+                toastAlert.defaultToaster('Ops, não foi possível carregar os cupons.');
+            });
         };
 
-        var callBack = function(e) {
-            console.log(e + "fechou o modal!")
-        };
+        scope.openDialog = function(ev, anuncio) {
+            modalService.openDialog(
+                'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
+                null, ev, anuncio
+            );
+        }
+
+        getCupons();
 
 	}]);
 })(window.angular);

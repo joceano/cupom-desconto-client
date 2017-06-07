@@ -13,15 +13,27 @@
 				</md-card-header>
 				<md-card-content class="content">				
 					<md-list>
-						<md-list-item class="md-2-line" 
-						 ng-repeat="anuncio in anuncios | filter:criterioDeBusca | orderBy: 'descricao'" 
+						<md-list-item class="md-3-line" 
+						 ng-repeat="anuncio in anuncios | filter:criterioDeBusca | orderBy: 'id':true" 
 						 ng-click="openDialog($event, anuncio)">
-							<ng-avatar initials="{{anuncio.descricao.substring(0,1)}}" 
+							<ng-avatar initials="{{anuncio.descricao}}" max-length="1"
 							 auto-color="true" round-shape="true" upper-case="true" 
-							 class="avatarCadastro"></ng-avatar>       		
+							 class="avatarCadastro"></ng-avatar>
 							<div class="md-list-item-text">						
-								<h3>{{anuncio.descricao}}</h3>
-							</div>							
+								<h3 ng-bind="anuncio.descricao.substring(0,{{substring}})"></h3>
+								<p>Válido até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</p>
+								<p>Status: {{isAtivo(anuncio)}}</p>
+							</div>	
+							<md-button class="md-icon-button" ng-if="!anuncio.aprovado">
+						        <md-icon>warning</md-icon>
+						        <md-tooltip>Aguardando aprovação.</md-tooltip>
+						    </md-button>
+						    <md-button ng-click="openDialogList($event, anuncio)" 
+						     class="md-icon-button" ng-if="anuncio.aprovado">
+						        <md-icon>list</md-icon>
+						        <md-tooltip>Consultar os cupons.</md-tooltip>
+						    </md-button>
+						    <md-divider md-inset hide-sm></md-divider>
 						</md-list-item>
 					</md-list>
 				</md-card-content>

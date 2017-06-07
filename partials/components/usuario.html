@@ -16,13 +16,14 @@
 						<md-list-item class="md-2-line" 
 						 ng-repeat="usuario in usuarios | filter:criterioDeBusca | orderBy: 'name'" 
 						 ng-click="openDialog($event, usuario)">
-							<ng-avatar initials="{{usuario.name.substring(0,1)}}" 
-							 auto-color="true" round-shape="true" upper-case="true" 
+							<ng-avatar initials="{{usuario.name}}" max-length="1"
+							 auto-color="true" round-shape="true" upper-case="true"
 							 class="avatarCadastro"></ng-avatar>       		
-							<div class="md-list-item-text">						
-								<h3>{{usuario.name}}</h3>	
-								<p>{{usuario.username}}</p>
+							<div class="md-list-item-text">
+								<h3 ng-bind="usuario.name.substring(0,{{substring}})"></h3>
+								<p ng-bind="usuario.username.substring(0,{{substring}})"></p>
 							</div>
+							<md-divider md-inset hide-sm></md-divider>
 						</md-list-item>
 					</md-list>
 				</md-card-content>

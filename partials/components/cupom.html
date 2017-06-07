@@ -1,15 +1,38 @@
- <md-content md-theme="altTheme">
-    <section>
-    	<md-subheader class="md-primary">Cupons</md-subheader>
-		<md-list>
-			<md-list-item class="md-2-line" 
-			 ng-repeat="cupom in cupons" ng-click="openDialog($event, cupom)">      		
-				<div class="md-list-item-text">						
-					<h3>{{cupom.nome}}</h3>	
-					<p>{{cupom.valor}}</p>
-				</div>
-				<md-divider></md-divider>
-			</md-list-item>				
-		</md-list>
-	</section>
-</md-content>
+<div layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
+	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<div layout="column" flex layout-fill ng-cloak ng-if="!loading">
+	<md-content style="height: 78vh;">
+		<section class="back-fff">
+			<md-card>
+				<md-card-header class="pesquisa">
+					<md-input-container class="md-block" id="pesquisa" flex>
+						<label>Pesquisar cupons</label>
+						<input ng-model="criterioDeBusca" />
+					</md-input-container>
+				</md-card-header>
+				<md-card-content class="content">				
+					<md-list>
+						<md-list-item class="md-3-line" 
+						 ng-repeat="cupom in cupons | filter:criterioDeBusca | orderBy: 'id':true" 
+						 ng-click="openDialog($event, cupom)">
+							<ng-avatar initials="{{cupom.anuncio.descricao}}" 
+							 auto-color="true" round-shape="true" upper-case="true" max-length="1"
+							 class="avatarCadastro"></ng-avatar>       		
+							<div class="md-list-item-text">
+								<h3 ng-bind="cupom.anuncio.descricao.substring(0,{{substring}})"></h3>
+								<p>Data: {{cupom.data | date: 'dd/MM/yyyy'}}</p>
+								<p>Cupom: {{cupom.id}}</p>
+							</div>	
+							<md-button class="md-icon-button" ng-if="cupom.baixado">
+						        <md-icon>star</md-icon>
+						        <md-tooltip>Realizar Avaliação.</md-tooltip>
+						    </md-button>
+						    <md-divider md-inset hide-sm></md-divider>						
+						</md-list-item>
+					</md-list>
+				</md-card-content>
+			</md-card>
+		</section>
+	</md-content>
+</div>

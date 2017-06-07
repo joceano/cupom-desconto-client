@@ -30,33 +30,31 @@
 				        	<div ng-message="required">A data final é obrigatória.</div>
 				        </div>
 				    </md-input-container>
-				    <div layout="row">
-					    <md-input-container class="md-block" flex-gt-sm flex="65">
-							<label>Descrição</label>
-							<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="45"/>
-							<div ng-messages="formCadastro.descricao.$error" 
-							 ng-show="formCadastro.descricao.$invalid">
-								<div ng-message="required">A descrição é obrigatória.</div>
-							</div>
-						</md-input-container>
-					    <md-autocomplete flex="35"
-				        	required
-				            md-input-name="autocompleteCategoria"
-				            md-selected-item="anuncio.categoria"
-				            md-search-text="searchTextCategoria"
-				            md-items="item in querySearch(searchTextCategoria)"
-				            md-item-text="item.descricao"
-				            md-min-length="0"
-							md-delay="300"			            
-				            md-floating-label="Categoria">
-					        <md-item-template>
-					        	<span md-highlight-text="searchTextCategoria">{{item.descricao}}</span>
-					        </md-item-template>
-					        <md-not-found>
-								Categoria "{{searchTextCategoria}}" não encontrada.
-							</md-not-found>
-				        </md-autocomplete>
-				    </div>
+				    <md-input-container class="md-block" flex-gt-sm>
+						<label>Descrição</label>
+						<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="60"/>
+						<div ng-messages="formCadastro.descricao.$error" 
+						 ng-show="formCadastro.descricao.$invalid">
+							<div ng-message="required">A descrição é obrigatória.</div>
+						</div>
+					</md-input-container>
+					<md-autocomplete
+			        	required
+			            md-input-name="autocompleteCategoria"
+			            md-selected-item="anuncio.categoria"
+			            md-search-text="searchTextCategoria"
+			            md-items="item in querySearch(searchTextCategoria)"
+			            md-item-text="item.descricao"
+			            md-min-length="0"
+						md-delay="300"			            
+			            md-floating-label="Categoria">
+				        <md-item-template>
+				        	<span md-highlight-text="searchTextCategoria">{{item.descricao}}</span>
+				        </md-item-template>
+				        <md-not-found>
+							Categoria "{{searchTextCategoria}}" não encontrada.
+						</md-not-found>
+			        </md-autocomplete>
 					<div layout="row">
 						<md-input-container class="md-block" flex="50">
 					      	<label>Preço Original</label>

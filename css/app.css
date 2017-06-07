@@ -354,14 +354,16 @@ md-dialog .md-dialog-content {
 	margin-right: 15px; 
 }
 .pesquisa {
-	padding-left: 30px !important;
-	padding-right: 30px !important;	
+	padding-left: 87px !important;	
 }
 #pesquisa {
 	margin-bottom: 0px !important; 	
 }
 .content {	
 	padding-top: 0px !important; 
+}
+.pesquisaList {
+	padding-left: 70px !important;	
 }
 .anuncioDescricao {
 	font-size: 16px !important;

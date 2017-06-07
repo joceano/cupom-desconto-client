@@ -7,6 +7,14 @@
 
         scope.categorias = [];
 
+        scope.substring = 200;
+        var mq = window.matchMedia( "(max-width: 680px)" );
+
+        var width = screen.width;        
+        if (mq.matches) {
+            scope.substring = 17;
+        }
+
         scope.$on('pushCategoria', function(e, categoria){
             scope.categorias.push(categoria);
         })

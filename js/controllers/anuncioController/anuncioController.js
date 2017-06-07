@@ -2,10 +2,26 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('AnuncioController', 
-        ['$scope','modalService','HttpService', '$timeout', 'toastAlert',
-	    function(scope, modalService, httpService, timeout, toastAlert) { 
+        ['$scope','modalService','HttpService', '$timeout', 'toastAlert', '$mdDialog',
+	    function(scope, modalService, httpService, timeout, toastAlert, mdDialog) { 
 
         scope.anuncios = [];
+
+        scope.isAtivo = function(anuncio) {
+            if (anuncio.ativo) {
+                return 'Ativo'
+            } else {
+                return 'Inativo';
+            }            
+        }
+
+        scope.substring = 200;
+        var mq = window.matchMedia( "(max-width: 680px)" );
+
+        var width = screen.width;        
+        if (mq.matches) {
+            scope.substring = 17;
+        }
 
         scope.$on('pushAnuncio', function(e, anuncio){
             scope.anuncios.push(anuncio);
@@ -26,6 +42,13 @@
             modalService.openDialog(
                 'partials/components/dialog/anuncioDialog.html', 'AnuncioDialogController',
                 callBack, ev, anuncioCopia
+            );
+        }
+
+        scope.openDialogList = function(ev, anuncio) {            
+            modalService.openDialog(
+                'partials/components/dialog/cupomDialogList.html', 'CupomDialogListController',
+                callBack, ev, anuncio
             );
         }
 

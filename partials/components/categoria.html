@@ -16,12 +16,13 @@
 						<md-list-item class="md-2-line" 
 						 ng-repeat="categoria in categorias | filter:criterioDeBusca | orderBy: 'descricao'" 
 						 ng-click="openDialog($event, categoria)">
-							<ng-avatar initials="{{categoria.descricao.substring(0,1)}}" 
+							<ng-avatar initials="{{categoria.descricao}}" max-length="1"
 							 auto-color="true" round-shape="true" upper-case="true" 
 							 class="avatarCadastro"></ng-avatar>       		
-							<div class="md-list-item-text">						
-								<h3>{{categoria.descricao}}</h3>						
+							<div class="md-list-item-text">
+								<h3 ng-bind="categoria.descricao.substring(0,{{substring}})"></h3>
 							</div>
+							<md-divider md-inset hide-sm></md-divider>
 						</md-list-item>
 					</md-list>
 				</md-card-content>
