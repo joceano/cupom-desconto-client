@@ -45,16 +45,6 @@
                toastAlert.defaultToaster('Ops, não foi possível gravar o usuario ' + usuario.name);           
             });
         }
-
-        scope.delete = function (usuario) {
-            httpService.delete('/user/'+usuario.id).then(function(res) {                
-                usuario.valueOf = -1;
-                mdDialog.hide(usuario);                
-            }, function (error) {
-                toastAlert.defaultToaster('Ops, não foi possível excluir o usuario ' + usuario.name); 
-            });
-        }
-
     }]);
 
 })(window.angular);

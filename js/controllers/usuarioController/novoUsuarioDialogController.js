@@ -14,9 +14,9 @@
 
         scope.save = function(usuario, password) {            
             usuario.enabled = true;            
-            httpService.post('/user/'+password, usuario).then(function(res) {
+            httpService.post('/user/novo/'+password, usuario).then(function(res) {
                 mdDialog.hide(usuario);  
-                toastAlert.defaultToaster('O usuário ' + usuario.name + ' foi salvo com sucesso.');
+                toastAlert.defaultToaster(res.data);
             }, function (error) {
                toastAlert.defaultToaster('Ops, não foi possível gravar o usuario ' + usuario.name);
             });

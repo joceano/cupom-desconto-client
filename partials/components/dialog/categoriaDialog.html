@@ -25,8 +25,8 @@
 			</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
-			<md-button ng-if="categoria.id" ng-click="delete(categoria)">Excluir</md-button>
-			<md-button ng-disabled="formCadastro.$invalid" 
+			<md-button ng-click="cancel()">Cancelar</md-button>
+			<md-button class="md-primary" ng-disabled="formCadastro.$invalid" 
 			 ng-click="save(categoria)">Salvar</md-button>
 		</md-dialog-actions>
 	</form>

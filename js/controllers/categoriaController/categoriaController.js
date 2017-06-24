@@ -40,11 +40,7 @@
         var callBack = function(categoria) {            
             scope.categorias.filter( function( elemento, index ) {
                 if (elemento.id == categoria.id) {                    
-                    if (categoria.valueOf == -1) {
-                        scope.categorias.splice(index, 1);    
-                    } else {
-                        scope.categorias[index] = categoria;
-                    }
+                    scope.categorias[index] = categoria;
                 }
             })            
         };

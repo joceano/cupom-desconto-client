@@ -56,8 +56,8 @@
 			</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
-			<md-button ng-if="usuario.id" ng-click="delete(usuario)">Excluir</md-button>
-			<md-button 
+			<md-button ng-click="cancel()">Cancelar</md-button>
+			<md-button class="md-primary"
 			 ng-disabled="(formCadastro.$invalid) || (senha && senha!=novaSenha) || 
 			 (novaSenha && senha!=novaSenha)"
 			 ng-click="save(usuario, senha, role)">Salvar</md-button>

@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('HomeController', 
-		['$scope', 'HttpService', 'LoginService', '$mdDialog', 'toastAlert', '$location',
-		function(scope, httpService, loginService, mdDialog, toastAlert, location) {
+		['$scope', 'HttpService', 'LoginService', '$mdDialog', 'toastAlert', '$location', 'modalService',
+		function(scope, httpService, loginService, mdDialog, toastAlert, location, modalService) {
 		
 		scope.cupom = {"id" : null, "usuario" : {"id" : null}, "anuncio" : {"id" : null}, "data" : null};
 
@@ -29,8 +29,8 @@
 				if (user.id) {
 					cupom.anuncio = anuncio;
 					cupom.usuario = user;
-			  		httpService.post('/cupom/', cupom).then(function(res) {		  			
-			  			toastAlert.defaultToaster('Parabéns, seu desconto está garantido!');
+			  		httpService.post('/cupom/pegarcupom/', cupom).then(function(res) {		  			
+			  			toastAlert.defaultToaster(res.data);
 		            }, function (error) {
 		            	toastAlert.defaultToaster('Ops, não foi possível adquirir esse cupom!');
 		            });	
@@ -43,6 +43,17 @@
 		  		//Cancelou
 			});
 	  	};
+
+	  	scope.verMaisDialog = function(ev, anuncio) {            
+            modalService.openDialog(
+                'partials/dialog/vermaisDialog.html', 'VerMaisDialogController',
+                callBack, ev, anuncio
+            );
+        }
+
+        var callBack = function() {            
+                       
+        };
 
 		getAnuncios();		
 	}]);

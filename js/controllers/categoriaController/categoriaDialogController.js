@@ -22,16 +22,6 @@
                toastAlert.defaultToaster('Ops, não foi possível gravar a categoria ' + categoria.descricao);           
             });
         }
-
-        scope.delete = function (categoria) {
-            httpService.delete('/categoria/'+categoria.id).then(function(res) {                
-                categoria.valueOf = -1;
-                mdDialog.hide(categoria);                
-            }, function (error) {
-                toastAlert.defaultToaster('Ops, não foi possível excluir a categoria ' + categoria.descricao); 
-            });
-        }
-
     }]);
 
 })(window.angular);

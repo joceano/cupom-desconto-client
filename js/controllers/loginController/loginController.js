@@ -11,7 +11,7 @@ angular.module("app.controllers").controller("LoginController", ['$scope', 'Logi
 
     scope.openDialog = function(ev) {        
         modalService.openDialog(
-            'partials/components/dialog/novoUsuarioDialog.html', 'NovoUsuarioDialogController',
+            'partials/dialog/novoUsuarioDialog.html', 'NovoUsuarioDialogController',
             null, ev, null
         );
     }

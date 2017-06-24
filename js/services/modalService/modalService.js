@@ -16,7 +16,8 @@
                 targetEvent: ev,
                 locals:  parameter,
                 clickOutsideToClose: true,
-                fullscreen: true
+                fullscreen: true,
+                multiple: true
             }).then(function(response) {
                 callBack(response);
             }, function() {

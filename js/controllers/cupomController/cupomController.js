@@ -25,10 +25,10 @@
             });
         };
 
-        scope.openDialog = function(ev, anuncio) {
+        scope.openDialog = function(ev, cupom) {
             modalService.openDialog(
                 'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
-                null, ev, anuncio
+                null, ev, cupom
             );
         }
 

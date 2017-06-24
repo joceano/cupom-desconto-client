@@ -1,8 +1,8 @@
-<md-dialog aria-label="Detalhes do Cupom">
+<md-dialog aria-label="Detalhes do cupom">
 	<form ng-cloak name="formCadastro">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>Detalhes do Cupom</h2>
+				<h2>Detalhes do cupom</h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="cancel()">
 					<md-icon aria-label="Fechar janela">close</md-icon>
@@ -12,10 +12,54 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div class="md-dialog-content">
-					<md-input-container class="md-block" flex-gt-sm>
-						<label>Id</label>
-						<input required name="id" ng-model="cupom.id"/>						
-					</md-input-container>
+					<div layout="row">
+						<md-input-container class="md-block" flex="50">
+							<label>Cupom</label>
+							<input disabled name="id" ng-model="cupom.id"/>						
+						</md-input-container>
+						<md-input-container class="md-block" flex="50">
+							<label>Anúncio</label>
+							<input disabled name="descricao" ng-model="cupom.anuncio.descricao"/>
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container class="md-block" flex="50">
+							<label>Cliente</label>
+							<input disabled name="name" ng-model="cupom.usuario.name"/>
+						</md-input-container>
+						<md-input-container class="md-block" flex="50">
+							<label>E-mail</label>
+							<input disabled name="username" ng-model="cupom.usuario.username"/>
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container class="md-block" flex="50">
+							<label>Telefone</label>
+							<input disabled name="telefone" ng-model="cupom.usuario.telefone" 
+							 ui-br-phone-number/>
+						</md-input-container>
+						<md-input-container class="md-block" flex="50">
+							<label>Preço</label>
+							<input disabled name="preco" ng-model="cupom.anuncio.precoPromo" 
+							 ui-money-mask="2"/>
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container class="md-block" flex="50">
+					        <label>Data Cupom</label>
+					        <md-datepicker disabled ng-model="cupom.data" 
+					         md-hide-icons="calendar" 
+					         name="data"></md-datepicker>
+					    </md-input-container>
+					    <md-input-container class="md-block" flex="50">
+					        <label>Validade</label>
+					        <md-datepicker disabled ng-model="cupom.anuncio.dataFinal" 
+					         md-hide-icons="calendar" 
+					         name="validade"></md-datepicker>
+					    </md-input-container>
+					</div>
+					<span class="fontColorGreen" ng-if="cupom.baixado">Cupom já utilizado!</span>
+					<span class="fontColorRed" ng-if="!cupom.baixado">Cupom aguardando utilizaçao!</span>
 				</div>
 			</div>
 		</md-dialog-content>

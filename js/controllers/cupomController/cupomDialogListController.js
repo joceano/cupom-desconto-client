@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('CupomDialogListController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) {
+        ['$scope','HttpService', 'modalService', '$mdDialog', 'locals', 'toastAlert',
+        function(scope, httpService, modalService, mdDialog, locals, toastAlert) {
 
         scope.substring = 200;
         var mq = window.matchMedia( "(max-width: 680px)" );
@@ -22,6 +22,13 @@
                scope.loading = false; 
                toastAlert.defaultToaster('Ops, não foi possível carregar os cupons.');
             });
+        }
+
+        scope.openDialog = function(ev, cupom) {
+            modalService.openDialog(
+                'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
+                null, ev, cupom
+            );
         }
 
         scope.finalizarCupom = function(ev, cupom) {

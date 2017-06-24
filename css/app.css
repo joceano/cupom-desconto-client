@@ -110,7 +110,7 @@ md-card md-card-header md-card-avatar {
 			width: 33%;
 		}		
 		md-dialog {			
-			width: 50%;
+			width: 60%;
 		}	
 }
 @media (max-width: 960px) {
@@ -284,6 +284,13 @@ md-dialog .md-dialog-content {
 }
 .colorBrown {
     background-color: #795548;
+}
+
+.fontColorGreen {
+	color: #009688;
+}
+.fontColorRed {
+	color:#F44336;
 }
 
 .percentBar {

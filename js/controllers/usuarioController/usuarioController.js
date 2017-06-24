@@ -36,11 +36,7 @@
         var callBack = function(usuario) {            
             scope.usuarios.filter( function( elemento, index ) {
                 if (elemento.id == usuario.id) {                    
-                    if (usuario.valueOf == -1) {
-                        scope.usuarios.splice(index, 1);    
-                    } else {
-                        scope.usuarios[index] = usuario;
-                    }
+                    scope.usuarios[index] = usuario;
                 }
             })            
         };

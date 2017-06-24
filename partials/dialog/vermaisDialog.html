@@ -1,0 +1,24 @@
+<md-dialog aria-label="Detalhes do anúncio">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>Detalhes do anúncio</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="cancel()">
+				<md-icon aria-label="Fechar janela">close</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content>
+		<div class="md-dialog-content">
+			<div class="md-dialog-content">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Descrição</label>
+					<input required name="descricao" ng-model="anuncio.descricao"/>
+				</md-input-container>
+			</div>
+		</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row">
+		<md-button ng-click="cancel()">Cancelar</md-button>
+	</md-dialog-actions>
+</md-dialog>

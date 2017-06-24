@@ -31,15 +31,6 @@
             });
         }
 
-        scope.delete = function (anuncio) {
-            httpService.delete('/anuncio/'+anuncio.id).then(function(res) {                
-                anuncio.valueOf = -1;
-                mdDialog.hide(anuncio);                
-            }, function (error) {
-                toastAlert.defaultToaster('Ops, não foi possível excluir o anuncio ' + anuncio.descricao); 
-            });
-        }
-
         scope.querySearch = function(query) {          
             if (query) {
                 return httpService.get('/categoria/autocomplete/'+query).then(function(res){

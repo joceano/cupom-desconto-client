@@ -2,7 +2,7 @@ angular.module("app.services").service("HttpService",
     ['$http', '$cookies', '$location',
     function (http, cookies, location) {
 
-    var contextPath = "http://192.168.0.102:8080/server";
+    var contextPath = "http://192.168.0.103:8080/server";
 
     this.get = function (url) {
         return http({

@@ -25,8 +25,8 @@
 							</div>
 							<md-list>
 								<md-list-item class="md-3-line"
-								 ng-repeat="cupom in cupons | filter:criterioDeBusca | orderBy: 'baixado'"
-								 ng-click="teste">
+								 ng-repeat="cupom in cupons | filter:criterioDeBusca | orderBy: 'id':true"
+								 ng-click="openDialog($event, cupom)">
 									<ng-avatar initials="{{cupom.usuario.username}}" max-length="1"
 									 auto-color="true" round-shape="true" upper-case="true" 
 									 class="avatarCadastro"></ng-avatar>
@@ -34,15 +34,14 @@
 										<h3 ng-bind="cupom.usuario.name.substring(0,{{substring}})"></h3>
 										<p ng-bind="cupom.usuario.username.substring(0,{{substring}})"></p>
 										<p>Data: {{cupom.data | date: 'dd/MM/yyyy'}}</p>
-										<p>Cupom: {{cupom.id}}</p>
 									</div>
 									<md-button ng-click="finalizarCupom($event, cupom)" ng-if="!cupom.baixado"
 								     class="md-icon-button">
-								        <md-icon>send</md-icon>
+								        <md-icon>save</md-icon>
 								        <md-tooltip>Finalizar cupom.</md-tooltip>
 								    </md-button>
 								    <md-button class="md-icon-button" ng-if="cupom.baixado">
-								        <md-icon>done all</md-icon>
+								        <md-icon>check</md-icon>
 								        <md-tooltip>Cupom finalizado.</md-tooltip>
 								    </md-button>
 								    <md-divider md-inset hide-sm></md-divider>

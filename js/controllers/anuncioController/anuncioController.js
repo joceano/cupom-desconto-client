@@ -55,11 +55,7 @@
         var callBack = function(anuncio) {            
             scope.anuncios.filter( function( elemento, index ) {
                 if (elemento.id == anuncio.id) {                    
-                    if (anuncio.valueOf == -1) {
-                        scope.anuncios.splice(index, 1);    
-                    } else {
-                        scope.anuncios[index] = anuncio;
-                    }
+                    scope.anuncios[index] = anuncio;
                 }
             })            
         };
