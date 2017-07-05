@@ -1,7 +1,7 @@
 <div class="md-padding">
 	<div layout="column" layout-gt-sm="row" layout-wrap>
 		<div flex="25" flex-gt-sm="25" ng-repeat="anuncio in anuncios">
-		    <md-card> 
+		    <md-card>
 	        	<img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagem" alt="imagem">
 		        <md-card-title>
 		          	<md-card-title-text class="descAnuncio">
@@ -21,7 +21,7 @@
 		          	</br>
 		          	<div class="textCenter">
 						<span class="anuncioOff">
-							<md-icon>alarm</md-icon>22 restantes
+							<md-icon>alarm</md-icon>{{anuncio.restante}} restantes
 						</span>
 						<span class="anuncioValidade">até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</span>
 		          	</div>

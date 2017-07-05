@@ -10,12 +10,59 @@
 	</md-toolbar>
 	<md-dialog-content>
 		<div class="md-dialog-content">
-			<div class="md-dialog-content">
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Descrição</label>
-					<input required name="descricao" ng-model="anuncio.descricao"/>
-				</md-input-container>
-			</div>
+			<md-card>
+		        <img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagemDet" alt="imagem">
+		        <md-card-title>
+		        	<md-card-title-text class="descAnuncio">
+		            	<span class="md-headline anuncioDescricaoDet colorBrown">
+		            		{{anuncio.descricao.substring(0,40)}}</span>
+		            	</br>
+		            	<md-divider></md-divider>
+		            	</br>
+		            	<div class="textCenter">
+		          			<span>De: </span>
+		          			<span class="anuncioPrecoDet"> {{anuncio.preco | currency}}</span>
+		          		</div>
+			          	<div class="textCenter"> 
+			          		<span class="anuncioPrecoPromoDet">Por: </span>
+			          		<span class="anuncioPrecoPromoDet">{{anuncio.precoPromo | currency}}</span>
+			          	</div>
+			          	</br>
+			          	<div class="textCenter">
+							<span class="anuncioOff">
+								<md-icon>alarm</md-icon>{{anuncio.restante}} restantes
+							</span>
+							<span class="anuncioValidade">até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</span>
+			          	</div>
+			          	</br>
+			          	<md-divider></md-divider>
+			          	</br>
+			          	<div ng-if="anuncio.detalhe">
+							<span class="anuncioRegulamento">
+								<span class="negrito">Detalhes:</span> {{anuncio.detalhe}}
+							</span>
+			          	</div>
+			          	</br>
+			          	<div ng-if="anuncio.regulamento">
+							<span class="anuncioRegulamento">
+								<span class="negrito">Regulamento:</span> {{anuncio.regulamento}}
+							</span>
+			          	</div>
+			          	</br>
+			          	<md-divider ng-if="anuncio.regulamento || anuncio.detalhe"></md-divider>
+			          	</br>
+			          	<span class="anuncioRegulamento negrito">Localização:</span>
+			          	<ng-map zoom="17" center="{{endereco}}" ng-if="true" class="mapaVerMais">
+			          		<custom-marker position="{{endereco}}">
+					          	<div class="my1">
+					          		<span>{{anuncio.usuario.name}}</span></br>
+					          		<span>{{fone}}</span>
+					          	</div>
+					        </custom-marker>
+			          	</ng-map>
+		          	</md-card-title-text>
+		        </md-card-title>
+      		</md-card>
 		</div>
 	</md-dialog-content>
 	<md-dialog-actions layout="row">

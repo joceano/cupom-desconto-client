@@ -105,22 +105,29 @@ md-card md-card-header md-card-avatar {
 }
 
 @media (min-width: 960px) {
-		.filter .search-item {
-			float: left;
-			width: 33%;
-		}		
-		md-dialog {			
-			width: 60%;
-		}	
+	.filter .search-item {
+		float: left;
+		width: 33%;
+	}		
+	md-dialog {			
+		width: 60%;
+	}
+}
+@media (min-width: 600px) {
+	.anuncioImagemDet {
+		max-width: 350px;
+		max-height: 650px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 @media (max-width: 960px) {
-	 .anuncioImagem {
+	.anuncioImagem {
 		max-width: 400px;
 		max-height: 250px;
 		margin-left: auto;
 		margin-right: auto;
-		
-	} 
+	}
 }	
 /*
 @media (max-width: 959px) {
@@ -396,3 +403,62 @@ md-dialog .md-dialog-content {
 	color: green;
 	font-size: 12px;
 }
+.anuncioPrecoDet {
+	font-size: 18px;
+	text-decoration: line-through;	
+}
+.anuncioPrecoPromoDet {
+	font-size: 22px;
+	font-weight: bold;
+}
+.anuncioDescricaoDet {
+	font-size: 18px !important;
+	text-align: center !important;
+	border-left:2px solid #CDBA96;
+	background-color: #CDBA96;
+}
+.anuncioRegulamento {
+	font-size: 12px;
+}
+.negrito {
+	font-weight: bold;
+}
+.mapaVerMais {
+	height: 200px;
+}
+.custom-marker.my1 {
+	font-size: 1.5em;
+	padding: 10px;
+	background: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: #7F7F7F solid 1px;
+}
+.custom-marker.my1:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 7px 6px 0;
+	border-color: #fff transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-left: -6px;
+	bottom: -6px;
+	left: 50%;
+}
+
+.custom-marker.my1:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 7px 6px 0;
+	border-color: #7F7F7F transparent;
+	display: block;
+	width: 0;
+	z-index: 0;
+	margin-left: -6px;
+	bottom: -7px;
+	left: 50%;
+}      

@@ -10,12 +10,19 @@
 		var getAnuncios = function() {
 			scope.loading = true;
 			httpService.get('/home/').then(function(res) {                
-				scope.anuncios = res.data; 
-				scope.loading = false;                
+				scope.anuncios = res.data;
+				scope.loading = false;
 			}, function (error) {                
 				toastAlert.defaultToaster('Ops, não foi possível carregar os anúncios.');
 			});
 		};
+
+		var diminuirQtdeRestante = function(anuncio) {
+			anuncio.restante = anuncio.restante - 1;
+  			if (anuncio.restante < 0) {
+  				anuncio.restante = 0;
+  			}
+		}
 
 		scope.showConfirm = function(ev, anuncio, cupom, user) {
 		var confirm = mdDialog.confirm()
@@ -30,6 +37,7 @@
 					cupom.anuncio = anuncio;
 					cupom.usuario = user;
 			  		httpService.post('/cupom/pegarcupom/', cupom).then(function(res) {		  			
+			  			diminuirQtdeRestante(cupom.anuncio);
 			  			toastAlert.defaultToaster(res.data);
 		            }, function (error) {
 		            	toastAlert.defaultToaster('Ops, não foi possível adquirir esse cupom!');
