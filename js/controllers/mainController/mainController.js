@@ -14,7 +14,7 @@
 			});
 		};			 	
 		 
-		scope.titulo = "Cupons de desconto"; 
+		scope.titulo = "cupons.com"; 
 
 		scope.menu = [
 			{icon: 'menu', abrirMenu: "Abrir menu"}

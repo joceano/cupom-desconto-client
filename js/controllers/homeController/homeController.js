@@ -1,7 +1,7 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('app.controllers').controller('HomeController', 
+	angular.module('app.controllers').controller('HomeController',
 		['$scope', 'HttpService', 'LoginService', '$mdDialog', 'toastAlert', '$location', 'modalService',
 		function(scope, httpService, loginService, mdDialog, toastAlert, location, modalService) {
 		
@@ -17,13 +17,6 @@
 			});
 		};
 
-		var diminuirQtdeRestante = function(anuncio) {
-			anuncio.restante = anuncio.restante - 1;
-  			if (anuncio.restante < 0) {
-  				anuncio.restante = 0;
-  			}
-		}
-
 		scope.showConfirm = function(ev, anuncio, cupom, user) {
 		var confirm = mdDialog.confirm()
 			.title('Deseja realmente utilizar esse cupom de desconto?')			
@@ -36,8 +29,7 @@
 				if (user.id) {
 					cupom.anuncio = anuncio;
 					cupom.usuario = user;
-			  		httpService.post('/cupom/pegarcupom/', cupom).then(function(res) {		  			
-			  			diminuirQtdeRestante(cupom.anuncio);
+			  		httpService.post('/cupom/pegarcupom/', cupom).then(function(res) {
 			  			toastAlert.defaultToaster(res.data);
 		            }, function (error) {
 		            	toastAlert.defaultToaster('Ops, não foi possível adquirir esse cupom!');

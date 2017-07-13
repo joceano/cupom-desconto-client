@@ -32,7 +32,8 @@
 				    </md-input-container>
 				    <md-input-container class="md-block" flex-gt-sm>
 						<label>Descrição</label>
-						<input required name="descricao" ng-model="anuncio.descricao" md-maxlength="40"/>
+						<input required name="descricao" 
+						 ng-model="anuncio.descricao" md-maxlength="40"/>
 						<div ng-messages="formCadastro.descricao.$error" 
 						 ng-show="formCadastro.descricao.$invalid">
 							<div ng-message="required">A descrição é obrigatória.</div>

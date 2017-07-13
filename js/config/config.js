@@ -4,7 +4,7 @@
 
 	.config(function ($mdDateLocaleProvider, $mdThemingProvider, $mdAriaProvider) {		
 		
-		$mdThemingProvider.theme('default').primaryPalette('teal');	
+		$mdThemingProvider.theme('default').primaryPalette('red');	
 
 		$mdDateLocaleProvider.formatDate = function (date) {
 	        return date ? moment(date).format('DD/MM/YYYY') : '';

@@ -292,14 +292,21 @@ md-dialog .md-dialog-content {
 .colorBrown {
     background-color: #795548;
 }
-
+.corCinza {
+	background-color: #F2F2F2;
+}
 .fontColorGreen {
 	color: #009688;
 }
 .fontColorRed {
-	color:#F44336;
+	color: red !important;
 }
-
+.fontColorWhite {
+	color: white;
+}
+.fontColorTeal {
+	color: teal;
+}
 .percentBar {
 	color: #fff;
 	height: 20px;
@@ -367,8 +374,30 @@ md-dialog .md-dialog-content {
 .avatarCadastro {
 	margin-right: 15px; 
 }
+/*
+@media (min-width: 600px) {
+	.pesquisaHome {
+		padding-left: 25% !important;
+		padding-right: 25% !important;
+		padding-top: 15px !important;
+	}		
+}
+@media (max-width: 600px) {
+	.pesquisaHome {
+		padding-left: 15px !important;
+		padding-right: 15px !important;
+		padding-top: 15px !important;
+	}
+}*/
+.pesquisaHome {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	padding-top: 15px !important;
+}
 .pesquisa {
-	padding-left: 87px !important;	
+	padding-bottom: 0px !important;	
+	padding-left: 30px !important;
+	padding-right: 15px !important;	
 }
 #pesquisa {
 	margin-bottom: 0px !important; 	
@@ -376,14 +405,11 @@ md-dialog .md-dialog-content {
 .content {	
 	padding-top: 0px !important; 
 }
-.pesquisaList {
-	padding-left: 70px !important;	
-}
 .anuncioDescricao {
 	font-size: 16px !important;
 	text-align: center !important;
-	border-left:2px solid #CDBA96;
-	background-color: #CDBA96;
+	border-left:2px solid #F2F2F2;
+	background-color: #F2F2F2;
 }
 .anuncioPreco {
 	font-size: 14px;
@@ -414,8 +440,8 @@ md-dialog .md-dialog-content {
 .anuncioDescricaoDet {
 	font-size: 18px !important;
 	text-align: center !important;
-	border-left:2px solid #CDBA96;
-	background-color: #CDBA96;
+	border-left:2px solid #F2F2F2;
+	background-color: #F2F2F2;
 }
 .anuncioRegulamento {
 	font-size: 12px;
@@ -448,7 +474,6 @@ md-dialog .md-dialog-content {
 	bottom: -6px;
 	left: 50%;
 }
-
 .custom-marker.my1:before {
 	content: '';
 	position: absolute;
@@ -461,4 +486,48 @@ md-dialog .md-dialog-content {
 	margin-left: -6px;
 	bottom: -7px;
 	left: 50%;
-}      
+}
+#home {
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	padding-top: 12px !important;
+}
+#removePadding {
+	padding-top: 0px !important;
+}
+.homeTotalCupons {
+	font-size: 15px !important;
+	padding-left: 5px;
+	
+	padding-bottom: 12px;
+}
+.homeMensagem {
+	font-size: 25px !important;
+}
+.corToolbarHome {
+	background-color: #FAFAFA !important;
+}
+.corSearchHome {
+	color: #A4A4A4 !important;
+}
+.corIconCupomHome {
+	color: red !important;
+}
+.qtdeCuponsHome {
+	font-size: 15px;
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+.msgHome {
+	text-align: center;
+	font-size: 22px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.dividerHome {
+	padding-left: 15px;
+	padding-right: 15px;
+}

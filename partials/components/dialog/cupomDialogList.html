@@ -17,13 +17,13 @@
 				<section class="back-fff">
 					<div class="md-dialog-content">
 						<div class="md-dialog-content">
-							<div class="pesquisaList">
+							<div class="pesquisa">
 								<md-input-container class="md-block" flex>
-									<label>Pesquisar cupons de usuários</label>
+									<label><md-icon>search</md-icon> Pesquisar cupons de usuários</label>
 									<input ng-model="criterioDeBusca"/>
 								</md-input-container>
 							</div>
-							<md-list>
+							<md-list id="removePadding">
 								<md-list-item class="md-3-line"
 								 ng-repeat="cupom in cupons | filter:criterioDeBusca | orderBy: 'id':true"
 								 ng-click="openDialog($event, cupom)">

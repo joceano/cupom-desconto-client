@@ -1,1 +1,46 @@
-<h1>{{nome}}</h1>
+<form ng-cloak name="formCadastro">
+	<div layout="column" flex layout-fill ng-cloak ng-if="!loading">
+		<md-content style="height: 90vh;">
+			<section class="back-fff">
+				<md-card>
+					<md-card-content class="content">				
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Nome Completo</label>
+							<input required name="nome" ng-model="nome" md-maxlength="80"/>
+							<div ng-messages="formCadastro.nome.$error" ng-show="formCadastro.nome.$invalid">
+								<div ng-message="required">O nome é obrigatório.</div>
+							</div>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>E-mail</label>
+							<input required type="email" name="email" ng-model="email" md-maxlength="80"/>
+							<div ng-messages="formCadastro.email.$error" 
+							 ng-show="formCadastro.email.$invalid">
+								<div ng-message="required">O e-mail é obrigatório.</div>
+								<div ng-message="email" >O e-mail é inválido.</div>
+							</div>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Telefone</label>
+							<input type="text" name="telefone" ng-model="telefone" ui-br-phone-number/>
+						</md-input-container>
+						<md-input-container class="md-block">
+				        	<label>Mensagem</label>
+				          	<textarea required ng-model="mensagem" name="mensagem" md-minlength="15" 
+				          	 md-select-on-focus></textarea>
+				          	<div ng-messages="formCadastro.mensagem.$error" 
+							 ng-show="formCadastro.mensagem.$invalid">
+								<div ng-message="required">A mensagem é obrigatória.</div>
+								<div ng-message="minlength">Informe ao menos 15 caracteres.</div>
+							</div>
+				        </md-input-container>
+					</md-card-content>
+					<md-card-actions layout="row" layout-align="end center">
+			          	<md-button style="float: right;" class="md-primary"
+						 ng-disabled="(formCadastro.$invalid)" ng-click="enviar()">Enviar</md-button>
+			        </md-card-actions>
+				</md-card>
+			</section>
+		</md-content>
+	</div>
+</form>

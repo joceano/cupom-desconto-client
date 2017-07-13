@@ -1,36 +1,60 @@
-<div class="md-padding">
-	<div layout="column" layout-gt-sm="row" layout-wrap>
-		<div flex="25" flex-gt-sm="25" ng-repeat="anuncio in anuncios">
-		    <md-card>
-	        	<img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagem" alt="imagem">
-		        <md-card-title>
-		          	<md-card-title-text class="descAnuncio">
-		            	<span class="md-headline anuncioDescricao 
-		            	 colorBrown">{{anuncio.descricao.substring(0,30)}}</span>
-		          	</md-card-title-text>
-		        </md-card-title>
-		        <md-card-content>
-		          	<div class="textCenter">
-		          		<span>De: </span>
-		          		<span class="anuncioPreco"> {{anuncio.preco | currency}}</span>
-		          	</div>
-		          	<div class="textCenter"> 
-		          		<span class="anuncioPrecoPromo">Por: </span>
-		          		<span class="anuncioPrecoPromo">{{anuncio.precoPromo | currency}}</span>
-		          	</div>
-		          	</br>
-		          	<div class="textCenter">
-						<span class="anuncioOff">
-							<md-icon>alarm</md-icon>{{anuncio.restante}} restantes
-						</span>
-						<span class="anuncioValidade">até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</span>
-		          	</div>
-		        </md-card-content>
-		        <md-card-actions layout="row" layout-align="end center">
-		          	<md-button ng-click="showConfirm($event, anuncio, cupom, user)">Pegar Cupom</md-button>
-		          	<md-button ng-click="verMaisDialog($event, anuncio)">Ver Mais</md-button>
-		        </md-card-actions>
-	      	</md-card>
+<div class="md-padding" layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
+	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<div ng-if="!loading && anuncios.length > 0">
+	<md-toolbar class="corToolbarHome">
+		<div class="pesquisaHome">
+			<md-input-container class="md-block" id="pesquisa">
+				<label><md-icon class="corSearchHome">search</md-icon> Pesquisar cupons de desconto</label>
+				<input ng-model="criterioDeBusca"/>
+			</md-input-container>
+		</div>
+		<span class="fontColorRed msgHome">
+			<md-icon class="fontColorRed">redeem</md-icon>
+			Economize com o melhor em Cupom de Desconto & Ofertas do dia.
+		</span>
+		<span class="fontColorRed qtdeCuponsHome">
+			<md-icon class="corIconCupomHome">loyalty</md-icon> 
+			{{anuncios.length}} cupons grátis pra você!
+		</span>
+		<div class="dividerHome">
+			<md-divider></md-divider>
+		</div>
+	</md-toolbar>
+	<md-card>
+		<div layout="column" layout-gt-sm="row" layout-wrap>
+			<div flex="25" flex-gt-sm="25" ng-repeat="anuncio in anuncios | filter:criterioDeBusca">
+			    <md-card>
+		        	<img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagem" alt="imagem">
+			        <md-card-title>
+			          	<md-card-title-text class="descAnuncio">
+			            	<span class="md-headline anuncioDescricao 
+			            	 corCinza">{{anuncio.descricao.substring(0,30)}}</span>
+			          	</md-card-title-text>
+			        </md-card-title>
+			        <md-card-content>
+			          	<div class="textCenter">
+			          		<span>De: </span>
+			          		<span class="anuncioPreco"> {{anuncio.preco | currency}}</span>
+			          	</div>
+			          	<div class="textCenter"> 
+			          		<span class="anuncioPrecoPromo">Por: </span>
+			          		<span class="anuncioPrecoPromo">{{anuncio.precoPromo | currency}}</span>
+			          	</div>
+			          	</br>
+			          	<div class="textCenter">
+							<span class="anuncioOff">
+								<md-icon>alarm</md-icon>{{anuncio.restante}} restantes
+							</span>
+							<span class="anuncioValidade">até {{anuncio.dataFinal | date: 'dd/MM/yyyy'}}</span>
+			          	</div>
+			        </md-card-content>
+			        <md-card-actions layout="row" layout-align="end center">
+			          	<md-button ng-click="showConfirm($event, anuncio, cupom, user)">Pegar Cupom</md-button>
+			          	<md-button ng-click="verMaisDialog($event, anuncio)">Ver Mais</md-button>
+			        </md-card-actions>
+		      	</md-card>
+		  	</div>
 	  	</div>
-  	</div>
+  	</md-card>
 </div>
