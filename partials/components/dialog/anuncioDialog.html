@@ -32,7 +32,7 @@
 				    </md-input-container>
 				    <md-input-container class="md-block" flex-gt-sm>
 						<label>Descrição</label>
-						<input required name="descricao" 
+						<input required name="descricao" ng-disabled="anuncio.aprovado" 
 						 ng-model="anuncio.descricao" md-maxlength="40"/>
 						<div ng-messages="formCadastro.descricao.$error" 
 						 ng-show="formCadastro.descricao.$invalid">
@@ -41,6 +41,7 @@
 					</md-input-container>
 					<md-autocomplete
 			        	required
+			        	ng-disabled="anuncio.aprovado"
 			            md-input-name="autocompleteCategoria"
 			            md-selected-item="anuncio.categoria"
 			            md-search-text="searchTextCategoria"
@@ -59,7 +60,8 @@
 					<div layout="row">
 						<md-input-container class="md-block" flex="50">
 					      	<label>Preço Original</label>
-					      	<input required name="precoOrig" ng-model="anuncio.preco" type="text" 
+					      	<input required name="precoOrig" ng-disabled="anuncio.aprovado"
+					      	 ng-model="anuncio.preco" type="text" 
 					      	 ui-money-mask="2" min="0.01">
 					      	<div ng-messages="formCadastro.precoOrig.$error" 
 					      	 ng-show="formCadastro.precoOrig.$invalid">
@@ -68,7 +70,8 @@
 					    </md-input-container>
 					    <md-input-container class="md-block" flex="50">
 					      	<label>Preço Promocional</label>
-					      	<input required name="precoPromo" ng-model="anuncio.precoPromo" type="text" 
+					      	<input required name="precoPromo" ng-disabled="anuncio.aprovado"
+					      	 ng-model="anuncio.precoPromo" type="text" 
 					      	 ui-money-mask="2" min="0.01">
 					      	 <div ng-messages="formCadastro.precoPromo.$error" 
 					      	  ng-show="formCadastro.precoPromo.$invalid">
@@ -88,7 +91,8 @@
 					    </md-input-container>
 					    <md-input-container class="md-block" flex="50">
 					      	<label>Qtde. por Cliente</label>			     
-					      	<input required name="quantidadeCli" ng-model="anuncio.quantidadeCli" 
+					      	<input required name="quantidadeCli" ng-disabled="anuncio.aprovado"
+					      	 ng-model="anuncio.quantidadeCli" 
 					      	 type="text" ui-number-mask="0">
 					      	 <div ng-messages="formCadastro.quantidadeCli.$error" 
 					      	  ng-show="formCadastro.quantidadeCli.$invalid">
@@ -98,12 +102,12 @@
 				    </div>
 			        <md-input-container class="md-block">
 			        	<label>Detalhes do Anúncio</label>
-			          	<textarea ng-model="anuncio.detalhe" md-maxlength="255"
+			          	<textarea ng-model="anuncio.detalhe" md-maxlength="255" ng-disabled="anuncio.aprovado"
 			          	 md-select-on-focus></textarea>
 			        </md-input-container>
 					<md-input-container class="md-block">
 			        	<label>Regulamento do Anúncio</label>
-			          	<textarea ng-model="anuncio.regulamento" md-maxlength="255"
+			          	<textarea ng-model="anuncio.regulamento" md-maxlength="255" ng-disabled="anuncio.aprovado"
 			          	 md-select-on-focus></textarea>
 			        </md-input-container>	
 			        <div>
