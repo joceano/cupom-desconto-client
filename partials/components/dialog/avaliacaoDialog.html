@@ -1,0 +1,36 @@
+<md-dialog aria-label="Avaliação">
+	<form ng-cloak name="formCadastro">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Avaliação</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon aria-label="Fechar janela">close</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+		<div class="md-padding" layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
+			<div class="md-dialog-content" ng-if="!loading">
+				<div class="md-dialog-content">
+					<jk-rating-stars max-rating="5" rating="avaliacao.nota" 
+					 read-only="avaliacao.id"></jk-rating-stars>
+					<md-input-container class="md-block">
+			        	<label>Mensagem</label>
+			          	<textarea ng-disabled="avaliacao.id" ng-model="avaliacao.mensagem" 
+			          	 md-maxlength="255" 
+			          	 md-select-on-focus></textarea>
+			        </md-input-container>
+			        <span class="fontColorGreen" ng-if="avaliacao.id">Avaliação já realizada!</span>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="cancel()">Cancelar</md-button>
+			<md-button class="md-primary" ng-disabled="formCadastro.$invalid || avaliacao.id" 
+			 ng-click="save(avaliacao)">Salvar</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

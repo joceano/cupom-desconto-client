@@ -16,10 +16,9 @@
         var getCupons = function() {
             scope.loading = true;
             httpService.post('/cupom/anuncios/', locals).then(function(res) {
-                scope.loading = false;
                 scope.cupons = res.data;                          
-            }, function (error) {
-               scope.loading = false; 
+                scope.loading = false;
+            }, function (error) { 
                toastAlert.defaultToaster('Ops, não foi possível carregar os cupons.');
             });
         }
@@ -40,7 +39,7 @@
             .cancel('Cancelar');
 
             mdDialog.show(confirm).then(function() {
-            cupom.baixado = true;                
+                cupom.baixado = true;
                 httpService.post('/cupom/', cupom).then(function(res) {                 
                     toastAlert.defaultToaster('Cupom do usuario '+cupom.usuario.username+
                         ' finalizado com sucesso!');

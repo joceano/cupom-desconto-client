@@ -1,6 +1,3 @@
-<div layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
-	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
-</div>
 <md-dialog aria-label="Cupons do anúncio">
 	<md-toolbar>
 		<div class="md-toolbar-tools">
@@ -12,6 +9,9 @@
 		</div>
 	</md-toolbar>
 	<md-dialog-content>
+		<div class="md-padding" layout="row" layout-sm="column" layout-align="space-around" ng-if="loading">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
 		<div layout="column" flex layout-fill ng-cloak ng-if="!loading">
 			<md-content >
 				<section class="back-fff">

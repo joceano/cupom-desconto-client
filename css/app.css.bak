@@ -511,7 +511,8 @@ md-dialog .md-dialog-content {
 	font-size: 15px;
 	padding-top: 15px;
 	padding-left: 15px;
-	padding-right: 15px;	
+	padding-right: 15px;
+	padding-bottom: 15px;
 	text-align: center;
 }
 .msgHome {
@@ -524,7 +525,6 @@ md-dialog .md-dialog-content {
 	margin-left: 15px !important;
 	margin-right: 15px !important;
 	margin-top: 20px !important;
-	padding-bottom: 20px !important;
 }
 .divConteudoHome {
 	margin-left: 7px !important;

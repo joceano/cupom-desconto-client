@@ -24,7 +24,8 @@
 								<p>Data: {{cupom.data | date: 'dd/MM/yyyy'}}</p>
 								<p>Cupom: {{cupom.id}}</p>
 							</div>	
-							<md-button class="md-icon-button" ng-if="cupom.baixado">
+							<md-button ng-click="openDialogAvaliacao($event, cupom)" 
+							 class="md-icon-button" ng-if="cupom.baixado">
 						        <md-icon>star</md-icon>
 						        <md-tooltip>Realizar Avaliação.</md-tooltip>
 						    </md-button>

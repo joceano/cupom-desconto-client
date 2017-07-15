@@ -19,7 +19,7 @@
 
 		scope.showConfirm = function(ev, anuncio, cupom, user) {
 		var confirm = mdDialog.confirm()
-			.title('Deseja realmente utilizar esse cupom de desconto?')			
+			.title('Deseja utilizar esse cupom de desconto?')			
 			.ariaLabel('')
 			.targetEvent(ev)
 			.ok('Confirmar')

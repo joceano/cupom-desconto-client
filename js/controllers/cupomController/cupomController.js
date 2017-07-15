@@ -32,6 +32,17 @@
             );
         }
 
+        scope.openDialogAvaliacao = function(ev, cupom) {
+            modalService.openDialog(
+                'partials/components/dialog/avaliacaoDialog.html', 'AvaliacaoDialogController',
+                callBack, ev, cupom
+            );
+        }
+
+        var callBack = function() {            
+                        
+        };
+
         getCupons();
 
 	}]);
