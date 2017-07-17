@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: UsuarioDialogController, controller da manutenção de usuários.
+ * data: 15/07/2017
+ **/
 (function (angular) {
     'use strict';
 
@@ -13,6 +18,9 @@
         scope.usuario   = locals || {};        
         setarRoles();
 
+        /**
+         * Privilégios do usuário utilizado para tratamentos na manutenção de usuários
+         **/    
         function setarRoles() {
             if (scope.usuario.roles == _RoleAdmin) {
                 scope.role = true;
@@ -21,6 +29,9 @@
             }
         }
 
+        /**
+         * Privilégios do usuário.
+         **/
         function tratarRoles(usuario, role) {
             if (role) {
                 usuario.roles = _RoleAdmin;
@@ -29,10 +40,16 @@
             }
         }
         
+        /**
+         * Finaliza o modal.
+         **/
         scope.cancel = function() {
             mdDialog.cancel();
         }
 
+        /**
+         * Envia requisição para a API para salvar o usuário.
+         **/
         scope.save = function(usuario, password, role) {
             scope.loading = true;
             tratarRoles(usuario, role)            

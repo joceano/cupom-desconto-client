@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Service: LoginService, service com os controles de login e logout.
+ * data: 15/07/2017
+ **/
 angular.module("app.services").service("LoginService", 
     ['$cookies', 'HttpService', 'toastAlert',
     function (cookies, httpService, toastAlert) {

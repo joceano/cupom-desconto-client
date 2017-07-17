@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: CategoriaDialogController, controller do modal de manutenção de categorias.
+ * data: 15/07/2017
+ **/
 (function (angular) {
     'use strict';
 
@@ -7,10 +12,16 @@
         
         scope.categoria = locals || {};
         
+        /**
+         * Finaliza o modal.
+         **/ 
         scope.cancel = function() {
             mdDialog.cancel();
         }
 
+        /**
+         * Faz requisição para a API para salvar a categoria.
+         **/
         scope.save = function(categoria) {
             scope.loading = true;
             httpService.post('/categoria/', categoria).then(function(res) {
@@ -23,5 +34,4 @@
             });
         }
     }]);
-
 })(window.angular);

@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: CupomDialogListController, controller do modal com a lista de cupons do anúncio.
+ * data: 15/07/2017
+ **/
 (function (angular) {
     'use strict';
 
@@ -7,12 +12,17 @@
 
         scope.substring = 200;
         var mq = window.matchMedia( "(max-width: 680px)" );
-
-        var width = screen.width;        
+        
+        /**
+         * Se a resolução da tela for menor que 680px, limita a string na lista de cupons.
+         **/
         if (mq.matches) {
             scope.substring = 17;
         }    
 
+        /**
+         * Faz requisição para a API para retornar os cupons cadastrados.
+         **/
         var getCupons = function() {
             scope.loading = true;
             httpService.post('/cupom/anuncios/', locals).then(function(res) {
@@ -23,6 +33,9 @@
             });
         }
 
+        /**
+         * Abre o modal para a visualização do cupom.
+         **/ 
         scope.openDialog = function(ev, cupom) {
             modalService.openDialog(
                 'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
@@ -30,6 +43,9 @@
             );
         }
 
+        /**
+         * Faz requisição para a API para finalizar o cupom.
+         **/ 
         scope.finalizarCupom = function(ev, cupom) {
         var confirm = mdDialog.confirm({multiple: true})
             .title('Deseja realmente finalizar o cupom do usuário ' + cupom.usuario.username + '?')
@@ -52,6 +68,9 @@
             });
         };
 
+        /**
+         * Finaliza o modal.
+         **/ 
         scope.cancel = function() {
             mdDialog.cancel();
         }
@@ -59,5 +78,4 @@
         getCupons();
 
     }]);
-
 })(window.angular);

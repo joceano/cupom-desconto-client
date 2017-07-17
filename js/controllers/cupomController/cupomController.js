@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: CupomController, controller da lista de cupons.
+ * data: 15/07/2017
+ **/
 (function (angular) {
 	'use strict';
 
@@ -6,15 +11,19 @@
         function(scope, modalService, httpService, timeout, toastAlert) {
     
         scope.cupons = [];
-
         scope.substring = 200;
         var mq = window.matchMedia( "(max-width: 680px)" );
 
-        var width = screen.width;        
+        /**
+         * Se a resolução da tela for menor que 680px, limita a string na lista de cupons.
+         **/
         if (mq.matches) {
             scope.substring = 17;
         }
 
+        /**
+         * Faz requisição para a API para retornar os cupons cadastrados.
+         **/
         var getCupons = function() {
             scope.loading = true;
             httpService.get('/cupom/').then(function(res) {                
@@ -25,6 +34,9 @@
             });
         };
 
+        /**
+         * Abre o modal para a visualização do cupom.
+         **/ 
         scope.openDialog = function(ev, cupom) {
             modalService.openDialog(
                 'partials/components/dialog/cupomDialog.html', 'CupomDialogController',
@@ -32,6 +44,9 @@
             );
         }
 
+        /**
+         * Abre o modal para a avaliação do cupom.
+         **/ 
         scope.openDialogAvaliacao = function(ev, cupom) {
             modalService.openDialog(
                 'partials/components/dialog/avaliacaoDialog.html', 'AvaliacaoDialogController',
@@ -39,9 +54,10 @@
             );
         }
 
-        var callBack = function() {            
-                        
-        };
+        /**
+         * Função callBack executada ao salvar a avaliação. Deverá ser implementada se necessário.
+         **/ 
+        var callBack = function() {};
 
         getCupons();
 

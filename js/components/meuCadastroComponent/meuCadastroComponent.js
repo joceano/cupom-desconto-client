@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Component: meucadastro, componente para a manutenção de dados do usuário logado.
+ * data: 15/07/2017
+ **/
 (function(angular) {
 	'use strict';
 	

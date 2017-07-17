@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: PerfilController, controller do perfil do usuário.
+ * data: 15/07/2017
+ **/
 (function (angular) {
 	'use strict';
 	angular.module('app.controllers').controller('PerfilController', ['$scope', '$location', 'modalService', 'LoginService',
@@ -11,10 +16,16 @@
         scope.userAdmin = '';
         scope.user = '';	 		 
 
+        /**
+         * Seta o índice da aba selecionada.
+         **/
 	 	scope.setSelectedIndex = function(index) {            
            scope.selectedIndex = index;           
         }
 
+        /**
+         * Faz requisição para a API para retornar o usuário logado.
+         **/
         var getUsuarioLogado = function() {
             loginService.userLogged().then(function (result) {
                 scope.user = result.data.roles;
@@ -26,6 +37,9 @@
             });
         };         
 
+        /**
+         * Abre o modal ao clicar no botão "Novo", conforme a aba selecionada.
+         **/
     	scope.openDialog = function(ev, index) {            
             scope.index = index;
             if (scope.index == _Categoria) {
@@ -37,6 +51,9 @@
             }
     	}
 
+        /**
+         * Função callBack executada após salvar o registro, conforme a aba selecionada.
+         **/
     	var callBack = function(obj) {           
             if (scope.index == _Categoria) {
                 scope.$broadcast('pushCategoria', obj);

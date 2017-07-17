@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: AnuncioController, controller da lista de anúncios.
+ * data: 15/07/2017
+ **/
 (function (angular) {
 	'use strict';
 
@@ -6,7 +11,23 @@
 	    function(scope, modalService, httpService, timeout, toastAlert, mdDialog) { 
 
         scope.anuncios = [];
+        scope.substring = 200;
+        var mq = window.matchMedia( "(max-width: 680px)" );
 
+        scope.$on('pushAnuncio', function(e, anuncio){
+            scope.anuncios.push(anuncio);
+        })
+
+        /**
+         * Se a resolução da tela for menor que 680px, limita a string na lista de anúncios.
+         **/
+        if (mq.matches) {
+            scope.substring = 17;
+        }
+
+        /**
+         * Trata label de anúncio Ativo ou Inativo.
+         **/
         scope.isAtivo = function(anuncio) {
             if (anuncio.ativo) {
                 return 'Ativo'
@@ -15,18 +36,9 @@
             }            
         }
 
-        scope.substring = 200;
-        var mq = window.matchMedia( "(max-width: 680px)" );
-
-        var width = screen.width;        
-        if (mq.matches) {
-            scope.substring = 17;
-        }
-
-        scope.$on('pushAnuncio', function(e, anuncio){
-            scope.anuncios.push(anuncio);
-        })
-
+        /**
+         * Faz requisição para a API para retornar os anúncios cadastrados.
+         **/
         var getAnuncios = function() {
             scope.loading = true;
             httpService.get('/anuncio/').then(function(res) {                
@@ -37,6 +49,9 @@
             });
         };
 
+        /**
+         * Abre o modal para a manutenção de anúncios.
+         **/ 
         scope.openDialog = function(ev, anuncio) {
             var anuncioCopia = angular.copy(anuncio)
             modalService.openDialog(
@@ -45,6 +60,9 @@
             );
         }
 
+        /**
+         * Abre o modal para a manutenção de cupons dos usuários(Finalizar o cupom para liberar a avaliação).
+         **/ 
         scope.openDialogList = function(ev, anuncio) {            
             modalService.openDialog(
                 'partials/components/dialog/cupomDialogList.html', 'CupomDialogListController',
@@ -52,6 +70,9 @@
             );
         }
 
+        /**
+         * Função callBack executada ao salvar o anúncio.
+         **/ 
         var callBack = function(anuncio) {            
             scope.anuncios.filter( function( elemento, index ) {
                 if (elemento.id == anuncio.id) {                    

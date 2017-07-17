@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Factory: toastAlert, toast padrão para mensagens de alerta.
+ * data: 15/07/2017
+ **/
 (function () {
     'use strict';
 

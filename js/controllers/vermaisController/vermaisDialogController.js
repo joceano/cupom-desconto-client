@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: VerMaisDialogController, controller da tela verMais acessada pelo Home.
+ * data: 15/07/2017
+ **/
 (function (angular) {
     'use strict';
 
@@ -21,6 +26,9 @@
             }
         }
         
+        /**
+         * Finaliza o modal.
+         **/
         scope.cancel = function() {
             mdDialog.cancel();
         }

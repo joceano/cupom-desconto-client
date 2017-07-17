@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Service: modalService, service padrão para os modais.
+ * data: 15/07/2017
+ **/
 (function (angular) {
 	'use strict';
     var DialogService = (function () {

@@ -1,8 +1,13 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Service: HttpService, service padrão utilizado nas requisições HTTP para a API.
+ * data: 15/07/2017
+ **/
 angular.module("app.services").service("HttpService", 
     ['$http', '$cookies', '$location',
     function (http, cookies, location) {
 
-    var contextPath = "http://192.168.0.103:8080/server";
+    var contextPath = "http://localhost:8080/server";
 
     this.get = function (url) {
         return http({

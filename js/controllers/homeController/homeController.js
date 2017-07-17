@@ -1,3 +1,8 @@
+/**
+ * @autor -  Joceano Alves de Borba - <alves.joceano@gmail.com>
+ * Controller: HomeController, controller da tela principal "Home".
+ * data: 15/07/2017
+ **/
 (function (angular) {
 	'use strict';
 
@@ -7,6 +12,9 @@
 		
 		scope.cupom = {"id" : null, "usuario" : {"id" : null}, "anuncio" : {"id" : null}, "data" : null};
 
+		/**
+         * Faz requisição para a API para retornar os anúncios.
+         **/
 		var getAnuncios = function() {
 			scope.loading = true;
 			httpService.get('/home/').then(function(res) {                
@@ -17,6 +25,9 @@
 			});
 		};
 
+		/**
+         * Abre o modal para confirmação de aquisição do cupom.
+         **/
 		scope.showConfirm = function(ev, anuncio, cupom, user) {
 		var confirm = mdDialog.confirm()
 			.title('Deseja utilizar esse cupom de desconto?')			
@@ -44,6 +55,9 @@
 			});
 	  	};
 
+	  	/**
+         * Abre o modal VerMais com maiores detalhes do anúncio.
+         **/
 	  	scope.verMaisDialog = function(ev, anuncio) {            
             modalService.openDialog(
                 'partials/dialog/vermaisDialog.html', 'VerMaisDialogController',
@@ -51,11 +65,12 @@
             );
         }
 
-        var callBack = function() {            
-                       
-        };
+        /**
+         * Função callBack executada ao fechar o modal verMais. Deverá ser implementado se necessário.
+         **/
+        var callBack = function() {};
 
-		getAnuncios();		
+		getAnuncios();
+
 	}]);
-
 })(window.angular);
