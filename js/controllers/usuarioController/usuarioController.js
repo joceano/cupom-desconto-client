@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('UsuarioController', 
-        ['$scope','modalService','HttpService', '$timeout', 'toastAlert',
-	    function(scope, modalService, httpService, timeout, toastAlert) { 
+        ['$scope','modalService','HttpService', '$timeout', 'toastr',
+	    function(scope, modalService, httpService, timeout, toastr) { 
 
         scope.usuarios = [];
         scope.substring = 200;
@@ -30,7 +30,7 @@
                 scope.usuarios = res.data; 
                 scope.loading = false;                
             }, function (error) {                
-                toastAlert.defaultToaster('Ops, não foi possível carregar os usuários.');
+                toastr.error('Não foi possível carregar os usuários.');
             });
         };
 

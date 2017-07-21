@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('MeuCadastroController', 
-        ['$scope','HttpService', 'toastAlert', 'LoginService',
-	    function(scope, httpService, toastAlert, loginService) { 
+        ['$scope','HttpService', 'toastr', 'LoginService',
+	    function(scope, httpService, toastr, loginService) { 
 
         scope.senha = '';
         scope.novaSenha = '';
@@ -30,9 +30,9 @@
                 usuario.id = res.data.id;
                 scope.senha = '';
         		scope.novaSenha = '';
-                toastAlert.defaultToaster('O cadastro foi alterado com sucesso.');
+                toastr.success('Registro salvo com sucesso.');
             }, function (error) { 
-               toastAlert.defaultToaster('Ops, não foi possível alterar o cadastro.');
+               toastr.error('Não foi possível salvar o registro.');
             });
         }
 

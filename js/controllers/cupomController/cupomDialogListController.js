@@ -7,8 +7,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('CupomDialogListController', 
-        ['$scope','HttpService', 'modalService', '$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, modalService, mdDialog, locals, toastAlert) {
+        ['$scope','HttpService', 'modalService', '$mdDialog', 'locals', 'toastr',
+        function(scope, httpService, modalService, mdDialog, locals, toastr) {
 
         scope.substring = 200;
         var mq = window.matchMedia( "(max-width: 680px)" );
@@ -29,7 +29,7 @@
                 scope.cupons = res.data;                          
                 scope.loading = false;
             }, function (error) { 
-               toastAlert.defaultToaster('Ops, não foi possível carregar os cupons.');
+               toastr.error('Não foi possível carregar os cupons.');
             });
         }
 
@@ -56,12 +56,10 @@
 
             mdDialog.show(confirm).then(function() {
                 cupom.baixado = true;
-                httpService.post('/cupom/', cupom).then(function(res) {                 
-                    toastAlert.defaultToaster('Cupom do usuario '+cupom.usuario.username+
-                        ' finalizado com sucesso!');
+                httpService.post('/cupom/', cupom).then(function(res) {
+                    toastr.success('Cupom finalizado com sucesso.');
                 }, function (error) {
-                    toastAlert.defaultToaster('Ops, não foi possível finalizar o cupom do usuário '+
-                        cupom.usuario.username+'!');
+                    toastr.error('Não foi possível finalizar o cupom.');
                 });
             }, function() {
                 //Cancelou

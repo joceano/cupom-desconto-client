@@ -4,14 +4,14 @@
  * data: 15/07/2017
  **/
 angular.module("app.services").service("LoginService", 
-    ['$cookies', 'HttpService', 'toastAlert',
-    function (cookies, httpService, toastAlert) {
+    ['$cookies', 'HttpService', 'toastr',
+    function (cookies, httpService, toastr) {
 
     this.auth = function (user) {
         return httpService.post('/auth', user).then( function (response) {            
             return response;            
         }, function (error) {
-            toastAlert.defaultToaster('Ops, verifique seu usuário e senha.');
+            toastr.warning('Verifique seu usuário e senha.');
         });
     }
 

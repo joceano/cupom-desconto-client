@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('HomeController',
-		['$scope', 'HttpService', 'LoginService', '$mdDialog', 'toastAlert', '$location', 'modalService',
-		function(scope, httpService, loginService, mdDialog, toastAlert, location, modalService) {
+		['$scope', 'HttpService', 'LoginService', '$mdDialog', 'toastr', '$location', 'modalService',
+		function(scope, httpService, loginService, mdDialog, toastr, location, modalService) {
 		
 		scope.cupom = {"id" : null, "usuario" : {"id" : null}, "anuncio" : {"id" : null}, "data" : null};
 
@@ -20,8 +20,8 @@
 			httpService.get('/home/').then(function(res) {                
 				scope.anuncios = res.data;
 				scope.loading = false;
-			}, function (error) {                
-				toastAlert.defaultToaster('Ops, não foi possível carregar os anúncios.');
+			}, function (error) {
+				toastr.error('Não foi possível carregar os anúncios.');
 			});
 		};
 
@@ -41,14 +41,14 @@
 					cupom.anuncio = anuncio;
 					cupom.usuario = user;
 			  		httpService.post('/cupom/pegarcupom/', cupom).then(function(res) {
-			  			toastAlert.defaultToaster(res.data);
+			  			toastr.info(res.data);
 		            }, function (error) {
-		            	toastAlert.defaultToaster('Ops, não foi possível adquirir esse cupom!');
+		            	toastr.error('Não foi possível adquirir o cupom.');
 		            });	
 				}
 				else {
 					location.path('/login');
-					toastAlert.defaultToaster('Ops, você não está logado!');
+					toastr.warning('Faça seu login ou cadastre-se.');
 				}
 			}, function() {
 		  		//Cancelou

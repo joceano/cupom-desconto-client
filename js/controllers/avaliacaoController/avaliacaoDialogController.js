@@ -7,8 +7,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('AvaliacaoDialogController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) { 
+        ['$scope','HttpService','$mdDialog', 'locals', 'toastr',
+        function(scope, httpService, mdDialog, locals, toastr) { 
 
         /**
          * Faz requisição para a API para retornar a avaliação.
@@ -22,7 +22,7 @@
                 }
                 scope.loading = false;
             }, function (error) {
-               toastAlert.defaultToaster('Ops, não foi possível carregar a avaliação.');
+               toastr.error('Não foi possível carregar a avaliação.');
             });
         }
         
@@ -49,10 +49,10 @@
                     scope.avaliacao.id = res.data.id;
                     mdDialog.hide(scope.avaliacao);
                     if (scope.avaliacao.id) {
-                        toastAlert.defaultToaster('Obrigado pela sua avaliação.');
+                        toastr.success('Avaliação realizada com sucesso.');
                     }                     
                 }, function (error) {
-                   toastAlert.defaultToaster('Ops, não foi possível gravar a avaliação');
+                   toastr.error('Não foi possível salvar a avaliação.');
                 });
             }, function() {
                 //Cancelou

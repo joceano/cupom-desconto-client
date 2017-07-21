@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('CategoriaController', 
-        ['$scope','modalService','HttpService', '$timeout', 'toastAlert',
-	    function(scope, modalService, httpService, timeout, toastAlert) { 
+        ['$scope','modalService','HttpService', '$timeout', 'toastr',
+	    function(scope, modalService, httpService, timeout, toastr) { 
 
         scope.categorias = [];
         scope.substring = 200;
@@ -34,7 +34,7 @@
                 scope.categorias = res.data; 
                 scope.loading = false;                
             }, function (error) {                
-                toastAlert.defaultToaster('Ops, não foi possível carregar as categorias.');
+                toastr.error('Não foi possível carregar as categorias.');
             });
         };
 

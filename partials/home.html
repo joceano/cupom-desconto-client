@@ -21,7 +21,8 @@
 	<div layout="column" layout-gt-sm="row" layout-wrap class="divConteudoHome">
 		<div flex="25" flex-gt-sm="25" ng-repeat="anuncio in anuncios | filter:criterioDeBusca">
 		    <md-card>
-	        	<img ng-src="/img/imgAnuncio.png" class="md-card-image anuncioImagem" alt="imagem">
+	        	<img style="max-height: 250px" ng-src="{{anuncio.diretorio}}" 
+	        	 class="md-card-image anuncioImagem" alt="imagem">
 		        <md-card-title>
 		          	<md-card-title-text class="descAnuncio">
 		            	<span class="md-headline anuncioDescricao 

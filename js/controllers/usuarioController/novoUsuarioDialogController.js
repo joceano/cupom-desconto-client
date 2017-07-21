@@ -7,8 +7,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('NovoUsuarioDialogController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) {
+        ['$scope','HttpService','$mdDialog', 'locals', 'toastr',
+        function(scope, httpService, mdDialog, locals, toastr) {
 
         scope.senha     = '';
         scope.novaSenha = '';	
@@ -27,9 +27,9 @@
             usuario.enabled = true;            
             httpService.post('/user/novo/'+password, usuario).then(function(res) {
                 mdDialog.hide(usuario);  
-                toastAlert.defaultToaster(res.data);
+                toastr.info(res.data);
             }, function (error) {
-               toastAlert.defaultToaster('Ops, não foi possível gravar o usuario ' + usuario.name);
+               toastr.error('Não foi possível salvar o registro.');
             });
         }
 

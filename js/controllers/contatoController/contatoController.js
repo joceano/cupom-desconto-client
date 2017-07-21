@@ -6,8 +6,8 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('app.controllers').controller('ContatoController', ['$scope', 'toastAlert',
-	 function(scope, toastAlert) {
+	angular.module('app.controllers').controller('ContatoController', ['$scope', 'toastr',
+	 function(scope, toastr) {
 	 	
 	 	scope.nome     = '';
 	 	scope.email    = '';
@@ -18,7 +18,7 @@
          * Simula o envio de um email. Não será implementado neste momento.
          **/ 
 	 	scope.enviar = function() {            
-            toastAlert.defaultToaster('E-mail enviado com sucesso.');
+            toastr.success('E-mail enviado com sucesso.');
         }	
 
 	}]);

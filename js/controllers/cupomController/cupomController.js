@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('CupomController', 
-        ['$scope','modalService', 'HttpService', '$timeout', 'toastAlert', 
-        function(scope, modalService, httpService, timeout, toastAlert) {
+        ['$scope','modalService', 'HttpService', '$timeout', 'toastr', 
+        function(scope, modalService, httpService, timeout, toastr) {
     
         scope.cupons = [];
         scope.substring = 200;
@@ -30,7 +30,7 @@
                 scope.cupons = res.data; 
                 scope.loading = false;                
             }, function (error) {                
-                toastAlert.defaultToaster('Ops, não foi possível carregar os cupons.');
+                toastr.error('Não foi possível carregar os cupons.');
             });
         };
 

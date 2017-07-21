@@ -7,8 +7,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('CategoriaDialogController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) {
+        ['$scope','HttpService','$mdDialog', 'locals', 'toastr',
+        function(scope, httpService, mdDialog, locals, toastr) {
         
         scope.categoria = locals || {};
         
@@ -27,10 +27,11 @@
             httpService.post('/categoria/', categoria).then(function(res) {
                 scope.loading = false;
                 categoria.id = res.data.id;
-                mdDialog.hide(categoria);                          
+                mdDialog.hide(categoria);
+                toastr.success('Registro salvo com sucesso.');
             }, function (error) {
-               scope.loading = false; 
-               toastAlert.defaultToaster('Ops, não foi possível gravar a categoria ' + categoria.descricao);           
+               scope.loading = false;
+               toastr.error('Não foi possível salvar o registro.');
             });
         }
     }]);

@@ -7,8 +7,8 @@
 	'use strict';
 
 	angular.module('app.controllers').controller('AnuncioController', 
-        ['$scope','modalService','HttpService', '$timeout', 'toastAlert', '$mdDialog',
-	    function(scope, modalService, httpService, timeout, toastAlert, mdDialog) { 
+        ['$scope','modalService','HttpService', '$timeout', 'toastr', '$mdDialog',
+	    function(scope, modalService, httpService, timeout, toastr, mdDialog) { 
 
         scope.anuncios = [];
         scope.substring = 200;
@@ -44,8 +44,8 @@
             httpService.get('/anuncio/').then(function(res) {                
                 scope.anuncios = res.data; 
                 scope.loading = false;                
-            }, function (error) {                
-                toastAlert.defaultToaster('Ops, não foi possível carregar os anúncios.');
+            }, function (error) {
+                toastr.error('Não foi possível carregar os anúncios.');
             });
         };
 

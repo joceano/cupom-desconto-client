@@ -5,5 +5,6 @@
  **/
 (function(angular) {
 	'use strict';
-	angular.module('app.directives', ['ngMaterial','ngAvatar','ui.utils.masks','ngMap','jkAngularRatingStars']);
+	angular.module('app.directives', ['ngMaterial','ngAvatar','ui.utils.masks','ngMap',
+									  'jkAngularRatingStars','toastr']);
 })(window.angular);

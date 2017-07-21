@@ -7,8 +7,8 @@
     'use strict';
 
     angular.module('app.controllers').controller('UsuarioDialogController', 
-        ['$scope','HttpService','$mdDialog', 'locals', 'toastAlert',
-        function(scope, httpService, mdDialog, locals, toastAlert) {
+        ['$scope','HttpService','$mdDialog', 'locals', 'toastr',
+        function(scope, httpService, mdDialog, locals, toastr) {
 
         const _RoleAdmin = 'ROLE_ADMIN';
         const _RoleUser  = 'ROLE_USER';    
@@ -56,10 +56,11 @@
             httpService.post('/user/'+password, usuario).then(function(res) {
                 scope.loading = false;
                 usuario.id = res.data.id;
-                mdDialog.hide(usuario);                          
+                mdDialog.hide(usuario);  
+                toastr.success('Registro salvo com sucesso.');                        
             }, function (error) {
                scope.loading = false; 
-               toastAlert.defaultToaster('Ops, não foi possível gravar o usuario ' + usuario.name);           
+               toastr.error('Não foi possível salvar o registro.');           
             });
         }
     }]);

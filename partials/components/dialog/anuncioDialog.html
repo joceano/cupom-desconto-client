@@ -1,5 +1,5 @@
 <md-dialog aria-label="Cadastro de anúncios">
-	<form ng-cloak name="formCadastro">
+	<form id="upload-file-form" ng-cloak name="formCadastro">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 				<h2>Cadastro de anúncios</h2>
@@ -109,11 +109,15 @@
 			        	<label>Regulamento do Anúncio</label>
 			          	<textarea ng-model="anuncio.regulamento" md-maxlength="255" ng-disabled="anuncio.aprovado"
 			          	 md-select-on-focus></textarea>
-			        </md-input-container>	
-			        <div>
+			        </md-input-container>
+			        <div>	
 			        	<md-checkbox ng-model="anuncio.ativo" aria-label="Ativo">Ativo</md-checkbox>
 			        	<md-checkbox ng-show="userAdmin" ng-model="anuncio.aprovado" 
 			        	 aria-label="Aprovado">Aprovado</md-checkbox>
+			        </div>
+			        <div id="upload">
+						<label for="upload-file-input">Imagem:</label>
+			  			<input id="upload-file-input" type="file" name="uploadfile" accept="image/*"/>
 			        </div>
 		    	</div>    
 			</div>
